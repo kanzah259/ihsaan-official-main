@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IHSAAN</title>
+  <meta name="description" content="IHSAAN — Where Muslim talent grows, leads, and belongs." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Mobile-only Loading Screen -->
+  <div id="mobileLoader" class="mobile-loader" aria-hidden="true">
+    <div class="mobile-loader-inner">
+      <img src="IHSAAN LOGO.png" alt="IHSAAN" class="mobile-loader-logo">
+      <div class="mobile-loader-pulse" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- ================= TOP NAV ================= -->
+  <header class="topbar" id="top">
+    <div class="nav-inner">
+      <!-- ✅ logo only, no IHSAAN text -->
+      <a class="brand brand--logoonly" href="#home" data-route="home" aria-label="IHSAAN home">
+        <img class="brand-logo" src="IHSAAN LOGO.png" alt="IHSAAN logo" />
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="nav-link" href="#who-we-are" data-route="who-we-are">Who We Are</a>
+
+        <div class="nav-dropdown" id="programmesDropdown">
+          <button class="nav-link nav-link-btn" type="button" aria-haspopup="menu" aria-expanded="false" id="programmesBtn">
+            Our Programmes <span class="chev" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="dropdown-menu" role="menu" aria-label="Programme pages" id="programmesMenu">
+            <a role="menuitem" href="#career-conferences" data-route="career-conferences">Career Conferences</a>
+            <a role="menuitem" href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
+            <a role="menuitem" href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
+            <a role="menuitem" href="#haqqathons" data-route="haqqathons">HAQQATHONS</a>
+            <a role="menuitem" href="#career-guides" data-route="career-guides">Career Guides</a>
+          </div>
+        </div>
+
+        <a class="nav-link" href="#get-involved" data-route="get-involved">Get Involved</a>
+      </nav>
+
+      <div class="nav-icons">
+        <a class="icon-btn ig" href="#" aria-label="Instagram" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </a>
+
+        <a class="icon-btn mail" href="mailto:ihsaan@fosis.org.uk" aria-label="Email" title="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2"/>
+            <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn: white "L" on blue -->
+        <a class="icon-btn li" href="#" aria-label="LinkedIn" title="LinkedIn">
+          <span class="li-letter" aria-hidden="true">L</span>
+        </a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-drawer" id="drawer" hidden>
+      <a href="#who-we-are" data-route="who-we-are">Who We Are</a>
+
+      <details class="mobile-accordion">
+        <summary>Our Programmes</summary>
+        <div class="mobile-sub">
+          <a href="#career-conferences" data-route="career-conferences">Career Conferences</a>
+          <a href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
+          <a href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
+          <a href="#haqqathons" data-route="haqqathons">HAQQATHONS</a>
+          <a href="#career-guides" data-route="career-guides">Career Guides</a>
+        </div>
+      </details>
+
+      <a href="#get-involved" data-route="get-involved">Get Involved</a>
+    </div>
+  </header>
+
+  <!-- ================= SPA APP ================= -->
+  <main class="app" id="app">
+
+    <!-- ================= HOME ================= -->
+    <section class="page is-active" id="page-home" data-page="home" aria-label="Home">
+
+      <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+          <img class="hero-logo" src="IHSAAN LOGO.png" alt="IHSAAN" />
+          <h1>Where Muslim Talent Grows,<br/>Leads, and Belongs</h1>
+
+          <div class="btn-row left">
+            <a class="btn hero-cta" href="#who-we-are" data-route="who-we-are">LEARN MORE</a>
+          </div>
+
+          <p class="hero-sub">
+            <span class="pillars-strong">Mentorship</span> ·
+            <span class="pillars-strong">Opportunity</span> ·
+            <span class="pillars-strong">Purpose</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- MISSION -->
+      <section class="section slab">
+        <div class="container">
+          <div class="center">
+            <h2 class="h2 white">Our Mission</h2>
+            <div class="mission-divider"></div>
+          </div>
+
+          <div class="mission-panel">
+            <p class="mission-text">
+              The Social Mobility Commission report found that young Muslims are
+              <span class="quote-strong">“excluded, discriminated against, or failed”</span>
+              throughout their journey into employment.
+              <br><br>
+              Our mission is to empower every Muslim student in the UK &amp; Ireland with
+              <strong class="quote-strong">mentorship, resources, and networks</strong>
+              to unlock their dream careers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPACT -->
+      <section class="section impact-section">
+        <div class="container center">
+          <div class="impact" id="impactSection">
+            <div class="bg placeholder"></div>
+            <div class="impact-inner">
+              <div class="impact-title">Our Impact</div>
+
+              <div class="stats">
+                <div class="stat">
+                  <div class="cap">EVENT &amp; CONFERENCE ATTENDEES</div>
+                  <p class="num counter" data-target="2000">0</p>
+                  <p class="sub">Across our nationwide career conferences.</p>
+                </div>
+
+                <div class="stat">
+                  <div class="cap">MONTHLY ENGAGEMENT</div>
+                  <p class="num counter" data-target="1500">0</p>
+                  <p class="sub">With our resources and mentorship initiatives</p>
+                </div>
+
+                <div class="stat">
+                  <div class="cap">STUDENTS REACHED</div>
+                  <p class="num counter" data-target="10000">0</p>
+                  <p class="sub">Across the UK &amp; Ireland.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRAMMES (✅ reduced spacing above via CSS) -->
+      <section class="section programmes-section">
+        <div class="container center">
+          <h2 class="h2">Our Programmes</h2>
+
+          <div class="scroller" aria-label="Programme cards">
+            <a class="prog-card" href="#career-conferences" data-route="career-conferences">
+              <div class="img placeholder"></div>
+              <div class="plus" aria-hidden="true"></div>
+              <div class="label">Career Conferences</div>
+            </a>
+
+            <a class="prog-card" href="#faithful-talent" data-route="faithful-talent">
+              <div class="img placeholder"></div>
+              <div class="plus" aria-hidden="true"></div>
+              <div class="label">Faithful Talent</div>
+            </a>
+
+            <a class="prog-card" href="#opportunities-tracker" data-route="opportunities-tracker">
+              <div class="img placeholder"></div>
+              <div class="plus" aria-hidden="true"></div>
+              <div class="label">Opportunities Tracker</div>
+            </a>
+
+            <a class="prog-card" href="#haqqathons" data-route="haqqathons">
+              <div class="img placeholder"></div>
+              <div class="plus" aria-hidden="true"></div>
+              <div class="label">HAQQATHONS</div>
+            </a>
+
+            <a class="prog-card" href="#career-guides" data-route="career-guides">
+              <div class="img placeholder"></div>
+              <div class="plus" aria-hidden="true"></div>
+              <div class="label">Career Guides</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUR VALUES -->
+      <section class="values-section" aria-label="Our Values">
+        <div class="container">
+          <div class="center">
+            <h2 class="h2 white">Our Values</h2>
+            <p class="values-sub">
+              Principles that guide our work and the community we build.
+            </p>
+          </div>
+
+          <div class="values-icons">
+            <figure class="value-icon">
+              <div class="value-icon-media">
+                <img src="ihsaan.png" alt="Excellence (Ihsaan)">
+              </div>
+              <figcaption>
+                <div class="v-title">Excellence</div>
+                <div class="v-sub">Ihsaan</div>
+              </figcaption>
+            </figure>
+
+            <figure class="value-icon">
+              <div class="value-icon-media">
+                <img src="taqwa.png" alt="God-Consciousness (Taqwa)">
+              </div>
+              <figcaption>
+                <div class="v-title">God-Consciousness</div>
+                <div class="v-sub">Taqwa</div>
+              </figcaption>
+            </figure>
+
+            <figure class="value-icon">
+              <div class="value-icon-media">
+                <img src="amanah.png" alt="Service (Amanah)">
+              </div>
+              <figcaption>
+                <div class="v-title">Service</div>
+                <div class="v-sub">Amanah</div>
+              </figcaption>
+            </figure>
+
+            <figure class="value-icon">
+              <div class="value-icon-media">
+                <img src="empowerment.png" alt="Empowerment (Tamkeen)">
+              </div>
+              <figcaption>
+                <div class="v-title">Empowerment</div>
+                <div class="v-sub">Tamkeen</div>
+              </figcaption>
+            </figure>
+
+            <figure class="value-icon">
+              <div class="value-icon-media">
+                <img src="amanah 2.png" alt="Transparency and Accountability (Amanah)">
+              </div>
+              <figcaption>
+                <div class="v-title">Transparency &amp; Accountability</div>
+                <div class="v-sub">Amanah</div>
+              </figcaption>
+            </figure>
+
+            <figure class="value-icon">
+              <div class="value-icon-media">
+                <img src="shura.png" alt="Consultation (Shura)">
+              </div>
+              <figcaption>
+                <div class="v-title">Consultation</div>
+                <div class="v-sub">Shura</div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTS CALENDAR -->
+      <section class="events-section" aria-label="Events Calendar">
+        <div class="container events-grid">
+          <div class="events-card">
+            <div class="events-img-wrap">
+              <img src="events-calendar.png" alt="IHSAAN Events Calendar preview">
+            </div>
+            <div class="events-card-meta">
+              <div class="events-card-title">IHSAAN · Events Calendar</div>
+              <div class="events-card-sub">
+                View and subscribe to events from IHSAAN on Luma. Ensuring that every Muslim student in the UK and Ireland has the support and resources to enter their dream career path.
+              </div>
+              <div class="events-site">luma.com</div>
+            </div>
+          </div>
+
+          <div class="events-copy">
+            <h2 class="events-heading">Events<br/>calendar</h2>
+            <p class="events-text">
+              Be the first to get notified about our latest events, conferences, and programmes,
+              all you need to do is sign up.
+            </p>
+            <a class="btn events-btn" href="#" target="_blank" rel="noopener">SIGN UP</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO WE HAVE WORKED WITH -->
+      <section class="worked-with" aria-label="Who we have worked with">
+        <div class="container">
+          <div class="center">
+            <div class="worked-title">Who we have worked with</div>
+          </div>
+
+          <div class="brand-carousel" aria-label="Partner logos carousel">
+            <div class="brand-track">
+
+              <div class="brand-tile"><img src="My Fridays.png" alt="My Fridays"></div>
+              <div class="brand-tile"><img src="Greentech.png" alt="Greentech"></div>
+              <div class="brand-tile"><img src="SMBF.png" alt="SMBF"></div>
+              <div class="brand-tile"><img src="DeenDevelopers.png" alt="Deen Developers"></div>
+              <div class="brand-tile"><img src="HoganLovells.png" alt="Hogan Lovells"></div>
+              <div class="brand-tile"><img src="AOME.png" alt="AOME"></div>
+              <div class="brand-tile"><img src="accenture.png" alt="Accenture"></div>
+              <div class="brand-tile"><img src="CubeNetwork.png" alt="Cube Network"></div>
+              <div class="brand-tile"><img src="Emerald.png" alt="Emerald"></div>
+              <div class="brand-tile"><img src="KPMC.png" alt="KPMC"></div>
+              <div class="brand-tile"><img src="MC.svg" alt="MC"></div>
+              <div class="brand-tile"><img src="MIPP.png" alt="MIPP"></div>
+              <div class="brand-tile"><img src="MIRE.png" alt="MIRE"></div>
+              <div class="brand-tile"><img src="MuslimsatAmazon.png" alt="Muslims at Amazon"></div>
+              <div class="brand-tile"><img src="MuslMicMakers.png" alt="Muslim Makers"></div>
+              <div class="brand-tile"><img src="Rail.png" alt="Rail"></div>
+              <div class="brand-tile"><img src="Wahed.png" alt="Wahed"></div>
+              <div class="brand-tile"><img src="WharfSisters.png" alt="Wharf Sisters"></div>
+
+              <!-- duplicate for seamless loop -->
+              <div class="brand-tile"><img src="My Fridays.png" alt="My Fridays"></div>
+              <div class="brand-tile"><img src="Greentech.png" alt="Greentech"></div>
+              <div class="brand-tile"><img src="SMBF.png" alt="SMBF"></div>
+              <div class="brand-tile"><img src="DeenDevelopers.png" alt="Deen Developers"></div>
+              <div class="brand-tile"><img src="HoganLovells.png" alt="Hogan Lovells"></div>
+              <div class="brand-tile"><img src="AOME.png" alt="AOME"></div>
+              <div class="brand-tile"><img src="accenture.png" alt="Accenture"></div>
+              <div class="brand-tile"><img src="CubeNetwork.png" alt="Cube Network"></div>
+              <div class="brand-tile"><img src="Emerald.png" alt="Emerald"></div>
+              <div class="brand-tile"><img src="KPMC.png" alt="KPMC"></div>
+              <div class="brand-tile"><img src="MC.svg" alt="MC"></div>
+              <div class="brand-tile"><img src="MIPP.png" alt="MIPP"></div>
+              <div class="brand-tile"><img src="MIRE.png" alt="MIRE"></div>
+              <div class="brand-tile"><img src="MuslimsatAmazon.png" alt="Muslims at Amazon"></div>
+              <div class="brand-tile"><img src="MuslMicMakers.png" alt="Muslim Makers"></div>
+              <div class="brand-tile"><img src="Rail.png" alt="Rail"></div>
+              <div class="brand-tile"><img src="Wahed.png" alt="Wahed"></div>
+              <div class="brand-tile"><img src="WharfSisters.png" alt="Wharf Sisters"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta center">
+        <div class="container">
+          <img class="footer-logo" src="IHSAAN LOGO.png" alt="IHSAAN" />
+          <h2 class="lets-gradient">Let’s get started.</h2>
+          <a class="btn partner-btn" href="#get-involved" data-route="get-involved">PARTNER WITH US</a>
+          <div class="email">ihsaan@fosis.org.uk</div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="page" id="page-who-we-are" data-page="who-we-are">
+      <div class="page-head">
+        <div class="container center">
+          <h1>Who We Are</h1>
+          <p class="white-muted">Our mission, values, and the community behind IHSAAN.</p>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="container">
+          <div class="card">
+            <h2 class="h2">Overview</h2>
+            <p class="darkp">Add your “Who We Are” content here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET INVOLVED -->
+    <section class="page" id="page-get-involved" data-page="get-involved">
+      <div class="page-head">
+        <div class="container center">
+          <h1>Get Involved</h1>
+          <p class="white-muted">Partner with us and help Muslim talent grow, lead, and belong.</p>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="container">
+          <div class="card">
+            <h2 class="h2">Partner with us</h2>
+            <p class="darkp">Add your sign-up form link and partnership options here.</p>
+            <div style="height:10px"></div>
+            <a class="btn dark-btn" href="#" target="_blank" rel="noopener">Register interest</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMME PAGES -->
+    <section class="page" id="page-career-conferences" data-page="career-conferences">
+      <div class="page-head"><div class="container center">
+        <h1>Career Conferences</h1>
+        <p class="white-muted">Flagship events, speakers, and nationwide networking opportunities.</p>
+      </div></div>
+      <div class="page-body"><div class="container"><div class="card">
+        <h2 class="h2">Overview</h2>
+        <p class="darkp">Add your conference schedule, speaker highlights, and registration links here.</p>
+      </div></div></div>
+    </section>
+
+    <section class="page" id="page-faithful-talent" data-page="faithful-talent">
+      <div class="page-head"><div class="container center">
+        <h1>Faithful Talent</h1>
+        <p class="white-muted">Supporting professional growth without compromising values.</p>
+      </div></div>
+      <div class="page-body"><div class="container"><div class="card">
+        <h2 class="h2">Overview</h2>
+        <p class="darkp">Add details about your Faithful Talent initiative here.</p>
+      </div></div></div>
+    </section>
+
+    <section class="page" id="page-opportunities-tracker" data-page="opportunities-tracker">
+      <div class="page-head"><div class="container center">
+        <h1>Opportunities Tracker</h1>
+        <p class="white-muted">Curated internships, fellowships, scholarships, and roles.</p>
+      </div></div>
+      <div class="page-body"><div class="container"><div class="card">
+        <h2 class="h2">Overview</h2>
+        <p class="darkp">Add a tracker embed or link here (Notion/Google Sheet/etc.).</p>
+      </div></div></div>
+    </section>
+
+    <section class="page" id="page-haqqathons" data-page="haqqathons">
+      <div class="page-head"><div class="container center">
+        <h1>HAQQATHONS</h1>
+        <p class="white-muted">Build, learn, and collaborate on meaningful projects.</p>
+      </div></div>
+      <div class="page-body"><div class="container"><div class="card">
+        <h2 class="h2">Overview</h2>
+        <p class="darkp">Add upcoming HAQQATHONS, past projects, and how to join.</p>
+      </div></div></div>
+    </section>
+
+    <section class="page" id="page-career-guides" data-page="career-guides">
+      <div class="page-head"><div class="container center">
+        <h1>Career Guides</h1>
+        <p class="white-muted">Practical guidance for applications, interviews, and growth.</p>
+      </div></div>
+      <div class="page-body"><div class="container"><div class="card">
+        <h2 class="h2">Overview</h2>
+        <p class="darkp">Add links to guides, PDFs, or resources here.</p>
+      </div></div></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <small class="foot-silver">© <span id="year"></span> IHSAAN</small>
+      <div class="foot-links">
+        <a href="#who-we-are" data-route="who-we-are">Who We Are</a>
+        <span class="sep">|</span>
+        <a href="#career-conferences" data-route="career-conferences">Programmes</a>
+        <span class="sep">|</span>
+        <a href="#get-involved" data-route="get-involved">Get Involved</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
