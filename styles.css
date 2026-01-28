@@ -527,14 +527,16 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   color: rgba(255,255,255,.84);
   line-height: 1.7;
 }
-.values-icons{
+.values-icons {
+  display: flex;           /* Flex container */
+  flex-wrap: wrap;         /* Wrap items to new rows */
+  justify-content: center; /* Center items in every row */
+  gap: 34px 40px;          /* Matches your previous grid gaps */
   margin-top: 34px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 34px 40px;
-  align-items:start;
-  justify-items:center;
+  align-items: flex-start; /* Align items to top of row */
 }
+
+
 .value-icon{
   margin:0;
   width:100%;
@@ -543,6 +545,7 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   display:flex;
   flex-direction:column;
   align-items:center;
+
 }
 .value-icon-media{
   width: 240px;
@@ -586,6 +589,7 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   letter-spacing:.04em;
   text-align:center;
 }
+
 
 /* EVENTS */
 .events-section{
