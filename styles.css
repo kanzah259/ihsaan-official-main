@@ -788,3 +788,11 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
 
   .hero-logo{ height:40px; top:12%; }
 }
+
+.events-img-wrap iframe {
+    width: 100%;
+    aspect-ratio: 4 / 3;  /* keeps the 600x450 ratio */
+    border: 1px solid #bfcbda88;
+    border-radius: 4px;
+    display: block;
+}
