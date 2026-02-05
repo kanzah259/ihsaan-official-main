@@ -477,12 +477,12 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   box-shadow:var(--shadow);
   position:relative;
 }
-.impact .bg{ position:absolute; inset:0; }
-.impact .bg.placeholder{
+
+/* .impact .bg.placeholder{
   background:
     radial-gradient(900px 520px at 70% 20%, rgba(25,78,139,.35), transparent 60%),
     linear-gradient(180deg, rgba(7,26,67,1), rgba(11,35,90,1));
-}
+} */
 .impact::before{
   content:"";
   position:absolute;
@@ -496,16 +496,7 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
-.stat{
-  background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.26);
-  border-radius:14px;
-  padding:20px 18px;
-  text-align:center;
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
-  backdrop-filter: blur(6px);
-  transition: transform .15s ease, filter .15s ease, box-shadow .18s ease;
-}
+
 .stat:hover{ transform: translateY(-3px); filter: brightness(1.03); box-shadow: var(--glow), 0 18px 40px rgba(0,0,0,.18); }
 .cap{
   display:inline-block;
@@ -791,7 +782,23 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
 
   .stats{ grid-template-columns:1fr; }
 
-  .impact-section{ padding-bottom: 24px; }
+  /* .impact-section{ padding-bottom: 24px; } */
+
+.impact-section {
+  position: relative;
+  /* Use the image as the section background */
+  background: url('images/ImpactNoDB.png') center/cover no-repeat;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+}
+.impact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7); /* Adjust 0.7 to make it darker/lighter */
+  z-index: 0;
+}
   .programmes-section{ padding-top: 24px; }
 
   .events-grid{ grid-template-columns:1fr; gap:20px; }
@@ -833,4 +840,71 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
 .prog-card[data-route="my-muslim-mentor"] .img {
   /* You didn't show this file in your screenshot list, so check the filename! */
   background: url('images/mmm.png') center/cover no-repeat;
+}
+
+/* --- IMPACT SECTION FIX --- */
+
+/* 1. Make the SECTION handle the background image, not a div inside it */
+.impact-section {
+  position: relative;
+  background-image: url('images/ImpactNoDB.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+  /* Ensure no other background color overrides it */
+  background-color: transparent !important; 
+}
+
+/* 2. Add the dark overlay so white text is readable */
+.impact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7); /* Adjust darkness here */
+  z-index: 1;
+}
+
+/* 3. Bring content above the overlay */
+.impact-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 4. REMOVE THE BOXES around the stats */
+.stat {
+  background: transparent !important; /* Forces transparency */
+  border: none !important;            /* Removes border */
+  box-shadow: none !important;        /* Removes shadow */
+  backdrop-filter: none !important;   /* Removes blur */
+  padding: 0 !important;              /* Removes padding inside box */
+}
+
+/* 5. Style the Blue Labels ("Event Attendees") */
+.stat .cap {
+  background-color: #0f3f85 !important; /* Solid blue */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 !important; /* Sharp corners */
+  padding: 10px 20px !important;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+/* 6. Style the Numbers */
+.stat .num {
+  font-size: 80px; /* Make them HUGE */
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+}
+
+/* 7. Style the Subtext */
+.stat .sub {
+  font-size: 18px;
+  color: #e2e8f0;
+  margin-top: 10px;
+  font-weight: 500;
 }
