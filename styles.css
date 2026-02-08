@@ -908,3 +908,45 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   margin-top: 10px;
   font-weight: 500;
 }
+
+.donate-strip{
+  background:#fff;
+  padding: 28px 0;
+  border-top: 1px solid rgba(16,43,104,.10);
+  border-bottom: 1px solid rgba(16,43,104,.10);
+}
+
+.donate-inner{
+  display:flex;
+  align-items:center;
+  justify-content:center; 
+  gap:72px;               
+  flex-wrap:wrap;         
+}
+
+.donate-text{
+  margin:0;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:-.01em;
+  background: linear-gradient(90deg, var(--navMid), var(--navBright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.donate-btn{
+  padding: 14px 22px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--navDark), var(--navMid), var(--navBright));
+  box-shadow: 0 14px 34px rgba(7,26,67,.18);
+  border: 1px solid rgba(255,255,255,.16);
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.donate-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--glow), 0 18px 40px rgba(0,0,0,.18);
+}
+
