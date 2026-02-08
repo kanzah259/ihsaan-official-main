@@ -916,7 +916,7 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   border-bottom: 1px solid rgba(16,43,104,.10);
 }
 
-.donate-inner{
+.container-donate-inner{
   display:flex;
   align-items:center;
   justify-content:center; 
