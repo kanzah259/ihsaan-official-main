@@ -1050,3 +1050,104 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   box-shadow: var(--glow), 0 18px 40px rgba(0,0,0,.18);
 }
 
+.haqqathon-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.haqqathon-card {
+  background: linear-gradient(145deg, #0b132b, #1c2541);
+  color: #f0f0f0;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.haqqathon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+
+.haqqathon-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.haqqathon-card .participants {
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #a0a0a0;
+}
+
+.haqqathon-card h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.haqqathon-card ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
+
+.haqqathon-card ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.haqqathon-link {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.haqqathon-link a {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700, #ffdd57);
+  color: #0b132b;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255, 221, 87, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.haqqathon-link a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 221, 87, 0.6);
+}
+
+.haqqathon-follow {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.haqqathon-follow p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--navDark);
+  font-size: 1.1rem;
+}
+
+.haqqathon-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--navMid), var(--navBright));
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0 0.5rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(96, 179, 247, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.haqqathon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 221, 87, 0.6);
+}
+
