@@ -11,15 +11,41 @@ function showPage(route) {
   const exists = Array.from(pages).some(p => p.dataset.page === route);
   const finalRoute = exists ? route : "home";
 
-  pages.forEach(p => {
-    p.classList.toggle("is-active", p.dataset.page === finalRoute);
-  });
+  const currentPage = document.querySelector(".page.is-active");
+  const nextPage = Array.from(pages).find(p => p.dataset.page === finalRoute);
 
-  closeDropdown();
-  if (drawer) drawer.hidden = true;
-  if (burger) burger.setAttribute("aria-expanded", "false");
+  if (currentPage === nextPage) return;
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // Fade out current page
+  if (currentPage) {
+    currentPage.style.opacity = "0";
+    currentPage.style.transform = "translateY(-8px)";
+    currentPage.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+  }
+
+  setTimeout(() => {
+    pages.forEach(p => {
+      p.classList.remove("is-active");
+      p.style.opacity = "";
+      p.style.transform = "";
+      p.style.transition = "";
+    });
+    if (nextPage) nextPage.classList.add("is-active");
+
+    closeDropdown();
+    if (drawer) drawer.hidden = true;
+    if (burger) burger.setAttribute("aria-expanded", "false");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Re-init reveal system for new page
+    initRevealSystem();
+
+    // Re-init counters if going to home
+    if (finalRoute === "home") {
+      impactCounterStarted = false;
+      initCounterObserver();
+    }
+  }, currentPage ? 250 : 0);
 }
 
 function handleRoute() {
@@ -80,25 +106,215 @@ document.addEventListener("click", () => closeDropdown());
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
 
+// ---------- HERO PARALLAX ----------
+function initHeroParallax() {
+  const heroVideo = document.querySelector(".hero-video");
+  const hero = document.querySelector(".hero");
+  if (!heroVideo || !hero) return;
+
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const heroHeight = hero.offsetHeight;
+        if (scrollY < heroHeight) {
+          heroVideo.style.transform = `translateY(${scrollY * 0.4}px) scale(1.1)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+// ---------- HERO TEXT REVEAL ----------
+function initHeroTextReveal() {
+  const heroTitle = document.getElementById("heroTitle");
+  if (!heroTitle) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const originalHTML = heroTitle.innerHTML;
+  const words = originalHTML.split(/(\s+|<br\s*\/?>)/);
+  heroTitle.innerHTML = words.map(word => {
+    if (word.match(/<br\s*\/?>/)) return word;
+    if (word.match(/^\s+$/)) return word;
+    return `<span class="word">${word}</span>`;
+  }).join("");
+
+  const wordEls = heroTitle.querySelectorAll(".word");
+  wordEls.forEach((word, i) => {
+    setTimeout(() => word.classList.add("visible"), 300 + i * 80);
+  });
+}
+
+// ---------- HERO PARTICLES ----------
+function initHeroParticles() {
+  const canvas = document.getElementById("heroParticles");
+  if (!canvas) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  const PARTICLE_COUNT = 40;
+  let animId = null;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2 + 0.5,
+      speedY: -(Math.random() * 0.3 + 0.1),
+      speedX: (Math.random() - 0.5) * 0.2,
+      opacity: Math.random() * 0.5 + 0.1,
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y += p.speedY;
+      p.x += p.speedX;
+      p.pulse += 0.02;
+      const alpha = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
+      if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(143, 208, 255, ${alpha})`;
+      ctx.fill();
+    });
+    animId = requestAnimationFrame(animate);
+  }
+
+  // Only animate when hero is visible
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { if (!animId) animate(); }
+      else { if (animId) { cancelAnimationFrame(animId); animId = null; } }
+    });
+  }, { threshold: 0.1 });
+  obs.observe(hero);
+}
+
+// ---------- NAV SCROLL STATE ----------
+function initNavScroll() {
+  const topbar = document.getElementById("top");
+  if (!topbar) return;
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        topbar.classList.toggle("scrolled", window.scrollY > 50);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+// ---------- SCROLL REVEAL SYSTEM ----------
+function initRevealSystem() {
+  const reveals = document.querySelectorAll("[data-reveal]:not(.is-visible)");
+  if (!reveals.length) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    reveals.forEach(el => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = parseInt(el.dataset.revealDelay || "0", 10);
+        setTimeout(() => {
+          el.classList.add("is-visible");
+          setTimeout(() => { el.style.willChange = "auto"; }, 1000);
+        }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+  reveals.forEach(el => observer.observe(el));
+}
+
+// ---------- BUTTON RIPPLE EFFECT ----------
+function initRippleEffect() {
+  document.querySelectorAll(".btn, .donate-btn").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      const ripple = document.createElement("span");
+      ripple.classList.add("ripple");
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + "px";
+      ripple.style.left = (e.clientX - rect.left - size / 2) + "px";
+      ripple.style.top = (e.clientY - rect.top - size / 2) + "px";
+      this.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
+    });
+  });
+}
+
+// ---------- 3D CARD TILT ----------
+function initCardTilt() {
+  const cards = document.querySelectorAll(".prog-card");
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform =
+        `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform =
+        "perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)";
+    });
+  });
+}
+
 // ---------- COUNT UP COUNTERS ----------
 let impactCounterStarted = false;
 
 function animateCounters() {
   const counters = document.querySelectorAll(".counter");
+
+  function easeOutExpo(t) {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  }
+
   counters.forEach(counter => {
     const target = parseInt(counter.dataset.target || "0", 10);
-    const duration = 1200;
+    const duration = 2000;
     const startTime = performance.now();
+    counter.classList.add("counting");
 
     function tick(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const value = Math.floor(progress * target);
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutExpo(progress);
+      const value = Math.floor(easedProgress * target);
       counter.textContent = value.toLocaleString();
 
-      if (progress < 1) requestAnimationFrame(tick);
-      else counter.textContent = target.toLocaleString() + "+";
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        counter.textContent = target.toLocaleString() + "+";
+        counter.classList.remove("counting");
+        counter.classList.add("done");
+      }
     }
-
     requestAnimationFrame(tick);
   });
 }
@@ -119,35 +335,25 @@ function initCounterObserver(){
   obs.observe(impact);
 }
 
-// ---------- MOBILE-ONLY LOADER ----------
-function runMobileLoader() {
-  const loader = document.getElementById("mobileLoader");
+// ---------- UNIVERSAL SITE LOADER ----------
+function runSiteLoader() {
+  const loader = document.getElementById("siteLoader");
   if (!loader) return;
-
-  const isMobile = window.matchMedia("(max-width: 900px)").matches;
-
-  if (!isMobile) {
-    loader.classList.remove("show");
-    loader.style.display = "none";
-    document.body.classList.add("loaded");
-    return;
-  }
-
-  loader.classList.add("show");
-  loader.style.display = "grid";
-
   setTimeout(() => {
-    document.body.classList.add("loaded");
-    loader.classList.remove("show");
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 450);
-  }, 850);
+    loader.classList.add("fade-out");
+    setTimeout(() => { loader.style.display = "none"; }, 600);
+  }, 1000);
 }
 
 // Init
 window.addEventListener("load", () => {
-  runMobileLoader();
+  runSiteLoader();
+  initNavScroll();
+  initHeroParallax();
+  initHeroTextReveal();
+  initHeroParticles();
+  initCardTilt();
+  initRippleEffect();
+  initRevealSystem();
   initCounterObserver();
 });
-window.addEventListener("resize", () => runMobileLoader());
