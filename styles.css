@@ -619,9 +619,15 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
 }
 .events-grid{
   display:grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 42px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   align-items:center;
+}
+@media (min-width: 900px){
+  .events-grid{
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+  }
 }
 .events-card{
   border-radius: 18px;
@@ -629,8 +635,14 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   box-shadow: 0 22px 60px rgba(0,0,0,.28);
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.06);
+  flex-direction: column;
+  display: flex;
 }
-.events-img-wrap{ background: rgba(255,255,255,.10); }
+.events-img-wrap{ background: rgba(255,255,255,.10);}
+.events-img-wrap iframe{
+  width: 100%;
+  min-height: 600px;
+}
 .events-card img{ width:100%; height:auto; display:block; }
 .events-card-meta{
   padding: 16px 18px 18px;
@@ -671,6 +683,23 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   background: rgba(255,255,255,.14);
   border: 1px solid rgba(255,255,255,.22);
 }
+
+
+
+@media (max-width: 900px) {
+  .events-card {
+    display: flex;
+    flex-direction: column;  
+  }
+  .events-card-meta { order: 1; }  
+  .events-img-wrap  { order: 2; }
+
+  .events-img-wrap iframe {
+    height: 500px;           
+  }
+}
+
+
 
 /* ✅ Worked with WHITE */
 .worked-with{
@@ -1151,3 +1180,47 @@ body.loaded .mobile-loader{ opacity:0; pointer-events:none; transition: opacity 
   box-shadow: 0 10px 20px rgba(255, 221, 87, 0.6);
 }
 
+
+
+/* Cards */
+#page-my-muslim-mentor .card {
+  background: linear-gradient(145deg, #0b132b, #1c2541);
+  color: #f0f0f0;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  margin-bottom: 2rem;
+}
+
+#page-my-muslim-mentor .card h2 {
+  color: #ffd700;
+}
+
+/* Call-to-Action Button */
+.mentor-follow {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.mentor-follow p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+
+.mentor-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffd700, #ffdd57);
+  color: #0b132b;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(255, 221, 87, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mentor-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 221, 87, 0.6);
+}
