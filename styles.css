@@ -921,6 +921,19 @@ img{ max-width:100%; display:block; }
   background: rgba(255,255,255,.14);
   border: 1px solid rgba(255,255,255,.22);
 }
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .events-card {
+    order: 2;
+  }
+
+  .events-copy {
+    order: 1;
+  }
+}
 
 /* ✅ Worked with WHITE */
 .worked-with{
