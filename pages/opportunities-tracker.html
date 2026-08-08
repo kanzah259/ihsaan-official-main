@@ -1,62 +1,143 @@
-<section class="page" id="page-opportunities-tracker" data-page="opportunities-tracker">
-      <div class="page-head"><div class="container center">
-        <h1>Opportunities Tracker</h1>
-        <p class="white-muted">A curated, regularly updated database of roles, internships, and scholarships.</p>
-      </div></div>
-      <div class="page-body"><div class="container">
+<section class="page tracker-page" id="page-opportunities-tracker" data-page="opportunities-tracker">
+  <div class="tracker-hero">
+    <div class="container tracker-hero-inner">
+      <div class="tracker-hero-copy">
+        <p class="tracker-eyebrow"><span></span> IHSAAN opportunities tracker <b>Beta</b></p>
+        <h1>Find the next step<br>in your career.</h1>
+        <p>Curated roles, internships, scholarships, and programmes, gathered in one calm, searchable place.</p>
+      </div>
+      <div class="tracker-hero-meta" aria-label="Tracker information">
+        <div><strong>Updated weekly</strong><span>New openings added by our team</span></div>
+        <div><strong>Built for you</strong><span>Student and early-career friendly</span></div>
+      </div>
+    </div>
+  </div>
 
-        <div class="card" data-reveal="fade-up">
-          <h2 class="h2">What Is the Opportunities Tracker?</h2>
-          <p class="darkp">
-            Finding the right opportunity shouldn't be a matter of luck or who you know. The IHSAAN Opportunities Tracker is a curated, regularly updated database of internships, graduate schemes, scholarships, fellowships, and entry-level roles &mdash; all in one place. We do the searching so you can focus on applying.
-          </p>
+  <div class="tracker-shell">
+    <div class="container">
+      <section class="tracker-intro" aria-label="About the tracker">
+        <div>
+          <p class="tracker-kicker">Opportunity board</p>
+          <h2>Explore what’s open now.</h2>
+          <p>The tracker is in beta while we shape it with the IHSAAN community. IHSAAN contributors can add opportunities, while tracker admins can keep listings accurate.</p>
+          <a class="tracker-current-link" href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">View the current Opportunities Tracker on Notion <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="tracker-actions"><button class="tracker-account" id="tracker-account-button" type="button">Contributor sign in</button></div>
+      </section>
 
-        <div class="card" data-reveal="fade-up" data-reveal-delay="100" style="margin-top: 24px;">
-          <h2 class="h2">Our Impact</h2>
-          <div class="mini-stats">
-            <div class="mini-stat">
-              <span class="mini-num">1,000+</span>
-              <span class="mini-label">Monthly Views</span>
-            </div>
-            <div class="mini-stat">
-              <span class="mini-num">7+</span>
-              <span class="mini-label">Users Secured Roles</span>
-            </div>
-            <div class="mini-stat">
-              <span class="mini-num">17</span>
-              <span class="mini-label">Career Guides Published</span>
-            </div>
-            <div class="mini-stat">
-              <span class="mini-num">280</span>
-              <span class="mini-label">Avg. Webinar Signups</span>
-            </div>
-            <div class="mini-stat">
-              <span class="mini-num">4.8/5</span>
-              <span class="mini-label">Average Rating</span>
-            </div>
+      <section class="tracker-board" aria-label="Opportunity listings">
+        <div class="tracker-controls">
+          <label class="tracker-search">
+            <span class="sr-only">Search opportunities</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"></circle><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+            <input id="opportunity-search" type="search" placeholder="Search by role, company, or area" autocomplete="off">
+          </label>
+          <div class="tracker-filter-row" aria-label="Filter opportunities by type">
+            <button class="tracker-filter is-active" type="button" data-tracker-filter="all">All opportunities</button>
+            <button class="tracker-filter" type="button" data-tracker-filter="Internship">Internships</button>
+            <button class="tracker-filter" type="button" data-tracker-filter="Graduate role">Graduate roles</button>
+            <button class="tracker-filter" type="button" data-tracker-filter="Scholarship">Scholarships</button>
           </div>
         </div>
 
-        <div class="card" data-reveal="fade-up" data-reveal-delay="200" style="margin-top: 24px;">
-          <h2 class="h2">What You'll Find</h2>
-          <ul class="darkp" style="line-height: 2; padding-left: 20px;">
-            <li><strong>Internships and placements</strong> across finance, law, tech, consulting, media, healthcare, and more</li>
-            <li><strong>Graduate schemes</strong> from leading UK and international employers</li>
-            <li><strong>Scholarships and bursaries</strong> for undergraduate and postgraduate students</li>
-            <li><strong>Fellowships and leadership programmes</strong> designed for high-potential students</li>
-            <li><strong>Diversity-focused roles</strong> from employers committed to inclusion</li>
-          </ul>
+        <div class="tracker-results-bar">
+          <p><strong id="opportunity-count">0</strong> <span id="opportunity-count-label">opportunities</span></p>
+          <p class="tracker-sort-label">Showing most recently added <span aria-hidden="true">↓</span></p>
         </div>
 
-        <div class="card" data-reveal="fade-up" data-reveal-delay="300" style="margin-top: 24px;">
-          <h2 class="h2">How It Works</h2>
-          <p class="darkp">
-            Our team manually curates and verifies every listing. We prioritise quality over quantity &mdash; every opportunity on the tracker is relevant, open, and vetted. The tracker is updated weekly and shared across our social media channels and mailing list.
-          </p>
-          <div style="height:14px"></div>
-          <a class="btn dark-btn" href="https://www.instagram.com/ihsaan.network/" target="_blank" rel="noopener">Follow for Updates</a>
+        <div class="opportunity-grid" id="opportunity-grid" aria-live="polite">
+          <p class="tracker-loading">Loading opportunities…</p>
         </div>
+        <p class="tracker-empty" id="opportunity-empty" hidden>No opportunities have been published yet. Check back soon.</p>
+      </section>
 
-      </div></div>
-    </section>
+    </div>
+  </div>
+
+  <dialog class="member-access-dialog" id="member-access-dialog" aria-labelledby="member-access-title">
+    <div class="member-access-panel">
+      <button class="member-access-close" type="button" data-dialog-close aria-label="Close member access dialog">×</button>
+      <div id="member-sign-in-view">
+        <p class="tracker-kicker">Members only</p>
+        <h2 id="member-access-title">Share an opportunity</h2>
+        <p class="member-access-copy">Sign in with your IHSAAN contributor email and password to share an opportunity.</p>
+        <form class="member-sign-in-form" id="member-sign-in-form">
+          <label>Email address<input id="member-email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label>Password<input id="member-password" type="password" autocomplete="current-password" placeholder="Your password" required></label>
+          <button class="member-primary-action" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="member-access-status" id="member-access-status" role="status"></p>
+        <p class="member-access-help">Only IHSAAN contributor accounts can submit. Ask an IHSAAN tracker administrator to create your account.</p>
+      </div>
+
+    </div>
+  </dialog>
+
+  <section class="tracker-workspace" id="tracker-workspace" aria-label="Contributor workspace" hidden>
+    <div class="container">
+      <div class="workspace-header"><div><p class="tracker-kicker">Contributor workspace</p><h2>Manage the tracker</h2><p id="tracker-signed-in-as"></p></div><div class="workspace-account-actions"><button class="tracker-sign-out" id="tracker-change-password" type="button">Change password</button><button class="tracker-sign-out" id="tracker-sign-out" type="button">Sign out</button></div></div>
+      <div class="workspace-tabs" role="tablist" aria-label="Tracker workspace">
+        <button class="workspace-tab is-active" type="button" data-workspace-view="submit">Add an opportunity</button>
+        <button class="workspace-tab" id="tracker-manage-button" type="button" data-workspace-view="manage" hidden>Edit or remove opportunities</button>
+        <button class="workspace-tab" id="tracker-members-button" type="button" data-workspace-view="members" hidden>People with access</button>
+      </div>
+
+      <section class="workspace-panel" id="tracker-submit-panel">
+        <p class="member-access-copy">Opportunities shared by authorised IHSAAN contributors are published to the tracker immediately.</p>
+        <form class="opportunity-submission-form" id="opportunity-submission-form">
+          <label>Role title<input name="title" type="text" placeholder="e.g. Graduate Analyst" required></label>
+          <label>Firm name<input name="organisation_name" type="text" placeholder="Organisation name" required></label>
+          <label>Role type<select name="opportunity_type" required><option value="" selected disabled>Select a type</option><option>Internship</option><option>Graduate role</option><option>Scholarship</option><option>Apprenticeship</option><option>Full-time</option><option>Part-time</option><option>Freelance</option><option>Volunteering</option><option>Programme</option><option>Other</option></select></label>
+          <label>Industry<input name="industry" type="text" placeholder="e.g. Technology" required></label>
+          <label>Location<input name="location" type="text" placeholder="e.g. London" required></label>
+          <label>Work location<select name="work_location_type" required><option value="" selected disabled>Select a location type</option><option>On-site</option><option>Hybrid</option><option>Remote</option></select></label>
+          <label>Remuneration<select name="remuneration" required><option value="" selected disabled>Select remuneration</option><option>Paid</option><option>Stipend provided</option><option>Unpaid</option></select></label>
+          <label>Application link<input name="application_url" type="url" placeholder="https://… (optional)"></label>
+          <label class="submission-full-width">Description<textarea name="description" rows="4" placeholder="Briefly describe the opportunity, eligibility, and anything applicants should know." required></textarea></label>
+          <button class="member-primary-action submission-full-width" type="submit">Add opportunity <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="member-access-status" id="submission-status" role="status"></p>
+      </section>
+
+      <section class="workspace-panel" id="tracker-management-panel" hidden>
+        <p class="member-access-copy">Update a listing or remove it from the public tracker.</p>
+        <div class="tracker-management-list" id="tracker-management-list" aria-live="polite"></div>
+        <p class="member-access-status" id="tracker-management-status" role="status"></p>
+      </section>
+
+      <section class="workspace-panel" id="tracker-members-panel" hidden>
+        <p class="member-access-copy">Add a trusted IHSAAN contributor, choose their access level, and set a unique temporary password. Share it privately; they can then choose their own password after signing in.</p>
+        <form class="tracker-member-form" id="tracker-member-form"><label>Email address<input name="email" type="email" placeholder="name@example.com" required></label><label>Access level<select name="role"><option value="member">Contributor</option><option value="editor" selected>Editor</option><option value="admin">Admin</option></select></label><label>Temporary password<input name="password" type="password" autocomplete="new-password" minlength="6" placeholder="At least 6 characters" required></label><button class="member-primary-action" type="submit">Create contributor</button></form>
+        <div class="tracker-members-list" id="tracker-members-list" aria-live="polite"></div>
+        <p class="member-access-status" id="tracker-members-status" role="status"></p>
+      </section>
+    </div>
+  </section>
+
+  <dialog class="member-access-dialog tracker-password-dialog" id="tracker-password-dialog" aria-labelledby="tracker-password-title">
+    <div class="member-access-panel">
+      <button class="member-access-close" type="button" data-password-close aria-label="Close change password">×</button>
+      <p class="tracker-kicker">Account security</p>
+      <h2 id="tracker-password-title">Choose a new password</h2>
+      <p class="member-access-copy">Use a strong password that you do not use elsewhere.</p>
+      <form class="member-sign-in-form" id="tracker-password-form">
+        <label>New password<input id="tracker-new-password" type="password" autocomplete="new-password" minlength="12" required></label>
+        <label>Confirm new password<input id="tracker-confirm-password" type="password" autocomplete="new-password" minlength="12" required></label>
+        <button class="member-primary-action" type="submit">Save new password</button>
+      </form>
+      <p class="member-access-status" id="tracker-password-status" role="status"></p>
+    </div>
+  </dialog>
+
+  <dialog class="member-access-dialog tracker-password-dialog" id="tracker-temporary-password-dialog" aria-labelledby="tracker-temporary-password-title">
+    <div class="member-access-panel">
+      <button class="member-access-close" type="button" data-temporary-password-close aria-label="Close temporary password">×</button>
+      <p class="tracker-kicker">One-time password</p>
+      <h2 id="tracker-temporary-password-title">Share this privately</h2>
+      <p class="member-access-copy">This password is for <strong id="tracker-temporary-password-email"></strong>. Copy it now, then ask them to change it after signing in.</p>
+      <code class="tracker-temporary-password-value" id="tracker-temporary-password-value"></code>
+      <button class="member-primary-action" id="tracker-copy-temporary-password" type="button">Copy password</button>
+      <p class="member-access-status" id="tracker-temporary-password-status" role="status"></p>
+    </div>
+  </dialog>
+</section>
