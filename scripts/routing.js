@@ -40,11 +40,7 @@ function showPage(route) {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     initRevealSystem();
-
-    if (finalRoute === "home") {
-      impactCounterStarted = false;
-      initCounterObserver();
-    }
+    initCounterObserver();
   }, currentPage ? 250 : 0);
 }
 

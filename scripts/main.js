@@ -20,6 +20,8 @@ window.addEventListener("load", async () => {
   initHeroParticles();
   initCardTilt();
   initRippleEffect();
+  initYoutubeCovers();
+  initInPageScrollLinks();
   initRevealSystem();
   initCounterObserver();
   initYear();
