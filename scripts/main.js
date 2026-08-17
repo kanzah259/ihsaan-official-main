@@ -7,6 +7,8 @@ window.addEventListener("load", async () => {
 
   bindRouteLinks();
 
+  initOpportunitiesTracker();
+
   handleRoute();
 
   initScrollRevealAndTimeline();

@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/opportunities-tracker.css?v=20260817-4" />
   <link rel="stylesheet" href="css/hackathons.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
@@ -68,7 +69,8 @@
           <div class="dropdown-menu" role="menu" aria-label="Programme pages" id="programmesMenu">
             <a role="menuitem" href="#career-conferences" data-route="career-conferences">Career Conferences</a>
             <a role="menuitem" href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
-            <a role="menuitem" href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker</a>
+            <a role="menuitem" href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker (Notion archive)</a>
+            <a role="menuitem" href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
             <a role="menuitem" href="#haqqathons" data-route="haqqathons">Hackathons</a>
             <a role="menuitem" href="https://ihsaannetwork.notion.site/careers-essentials" target="_blank" rel="noopener">Career Guides</a>
             <a href="https://mymuslimmentor.com" target="_blank" rel="noopener">My Muslim Mentor</a>
@@ -115,7 +117,8 @@
         <div class="mobile-sub">
           <a href="#career-conferences" data-route="career-conferences">Career Conferences</a>
           <a href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
-          <a href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker</a>
+          <a href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker (Notion archive)</a>
+          <a href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
           <a href="#haqqathons" data-route="haqqathons">Hackathons</a>
           <a href="https://ihsaannetwork.notion.site/careers-essentials" target="_blank" rel="noopener">Career Guides</a>
           <a href="https://mymuslimmentor.com" target="_blank" rel="noopener">My Muslim Mentor</a>
@@ -129,12 +132,12 @@
   <!-- ================= SPA APP ================= -->
   <main class="app" id="app">
 
-    <div data-include="pages/home.html"></div>
+  <div data-include="pages/home.html?v=20260817-4"></div>
   <div data-include="pages/who-we-are.html"></div>
   <div data-include="pages/get-involved.html"></div>
   <div data-include="pages/career-conferences.html"></div>
   <div data-include="pages/faithful-talent.html"></div>
-  <div data-include="pages/opportunities-tracker.html"></div>
+  <div data-include="pages/opportunities-tracker.html?v=20260817-4"></div>
   <div data-include="pages/haqqathons.html"></div>
   <div data-include="pages/career-guides.html"></div>
     
@@ -176,6 +179,7 @@
       <h4 class="footer-heading">Our Programmes</h4>
       <a href="#career-conferences" data-route="career-conferences">Career Conferences</a>
       <a href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
+      <a href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker (Notion archive)</a>
       <a href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
       <a href="#haqqathons" data-route="haqqathons">Hackathons</a>
       <a href="#career-guides" data-route="career-guides">Career Guides</a>
@@ -209,7 +213,10 @@
   <script src="scripts/scroll-reveal.js"></script>
   <script src="scripts/ui-effects.js"></script>
   <script src="scripts/routing.js"></script>
-  <script src="js/year.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="scripts/supabase-config.js?v=20260812-4"></script>
+  <script src="scripts/opportunities-tracker.js?v=20260817-4"></script>
+  <script src="scripts/year.js"></script>
   <script src="scripts/main.js"></script>
 
 </body>
