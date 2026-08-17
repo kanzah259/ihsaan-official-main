@@ -109,3 +109,1572 @@
   background: rgba(255,255,255,.12) !important;
   border-color: #fff;
 }
+
+/* ---------- FAITHFUL TALENT ---------- */
+#page-faithful-talent {
+  --faithful-rail: min(1440px, calc(100% - (var(--site-gutter-wide, 48px) * 2)));
+  background: #f7faff;
+}
+
+#page-faithful-talent .container {
+  width: var(--faithful-rail);
+}
+
+#page-faithful-talent .faithful-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(112px, 14vh, 154px) 0 clamp(72px, 9vh, 104px);
+  color: #ffffff;
+  background:
+    linear-gradient(90deg, rgba(3,11,27,.95) 0%, rgba(3,11,27,.74) 46%, rgba(3,11,27,.38) 100%),
+    url('../assets/images/faithful_talent.webp') center / cover no-repeat;
+}
+
+#page-faithful-talent .faithful-hero::before,
+#page-faithful-talent .faithful-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#page-faithful-talent .faithful-hero::before {
+  opacity: .18;
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+#page-faithful-talent .faithful-hero::after {
+  background:
+    radial-gradient(ellipse at 22% 44%, rgba(3,11,27,.70), transparent 48%),
+    radial-gradient(ellipse at 74% 18%, rgba(245,200,66,.16), transparent 32%),
+    linear-gradient(180deg, rgba(3,11,27,.08) 0%, rgba(3,11,27,.20) 54%, rgba(3,11,27,.80) 100%);
+}
+
+#page-faithful-talent .faithful-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+#page-faithful-talent .faithful-hero-copy {
+  max-width: 840px;
+}
+
+#page-faithful-talent .faithful-hero h1 {
+  position: relative;
+  display: inline-block;
+  max-width: 12ch;
+  margin: 0 0 22px;
+  color: #ffffff;
+  font-size: clamp(48px, 6.4vw, 96px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  text-shadow:
+    0 10px 28px rgba(0,0,0,.58),
+    0 24px 58px rgba(0,0,0,.40),
+    0 0 42px rgba(7,19,41,.30);
+}
+
+#page-faithful-talent .faithful-hero h1 .word {
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity .5s var(--ease-out-expo),
+    transform .5s var(--ease-out-expo);
+}
+
+#page-faithful-talent .faithful-hero h1 .word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#page-faithful-talent .faithful-hero h1 .word::before,
+#page-faithful-talent .faithful-hero h1 .word::after {
+  content: none;
+}
+
+#page-faithful-talent .faithful-hero h1 .letter {
+  display: inline-block;
+  position: relative;
+}
+
+#page-faithful-talent .faithful-hero p {
+  max-width: 55ch;
+  margin: 0;
+  color: rgba(239,246,255,.84);
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.65;
+}
+
+#page-faithful-talent .faithful-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: clamp(26px, 4vh, 38px);
+}
+
+#page-faithful-talent .faithful-hero-link,
+#page-faithful-talent .faithful-internships-link {
+  color: rgba(239,246,255,.88);
+  font-size: 15px;
+  font-weight: 650;
+  border-bottom: 1px solid rgba(239,246,255,.46);
+  padding-bottom: 4px;
+}
+
+#page-faithful-talent .faithful-hero-link:hover,
+#page-faithful-talent .faithful-internships-link:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+#page-faithful-talent .faithful-hero-panel {
+  padding: clamp(24px, 3vw, 34px);
+  border: 1px solid rgba(255,255,255,.20);
+  background: rgba(7,19,41,.46);
+  box-shadow: 0 30px 80px rgba(0,0,0,.30);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+#page-faithful-talent .faithful-hero-panel strong {
+  display: block;
+  color: #ffffff;
+  font-size: clamp(58px, 7vw, 98px);
+  font-weight: 700;
+  line-height: .86;
+  letter-spacing: -0.06em;
+}
+
+#page-faithful-talent .faithful-hero-panel span {
+  display: block;
+  max-width: 20ch;
+  margin-top: 16px;
+  color: rgba(239,246,255,.76);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+#page-faithful-talent .faithful-context-section,
+#page-faithful-talent .faithful-pathways-section,
+#page-faithful-talent .faithful-impact-section {
+  padding: clamp(68px, 9vw, 118px) 0;
+}
+
+#page-faithful-talent .faithful-context-section {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f7faff 58%, #edf4fb 100%);
+  border-bottom: 1px solid rgba(16,43,104,.08);
+}
+
+#page-faithful-talent .faithful-context-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#page-faithful-talent .faithful-context-card {
+  min-height: 430px;
+  padding: clamp(26px, 4vw, 48px);
+  border: 1px solid rgba(16,43,104,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,250,255,.96));
+  box-shadow: 0 26px 70px rgba(16,43,104,.10);
+}
+
+#page-faithful-talent .faithful-context-card-dark {
+  background:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(135deg, #071329 0%, #0a2141 58%, #102b68 100%);
+  background-size: 52px 52px, 52px 52px, auto;
+}
+
+#page-faithful-talent .faithful-context-card h2,
+#page-faithful-talent .faithful-section-head h2,
+#page-faithful-talent .faithful-internships-copy h2 {
+  margin: 0;
+  color: #071329;
+  font-size: clamp(34px, 4.5vw, 66px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+#page-faithful-talent .faithful-context-card-dark h2,
+#page-faithful-talent .faithful-internships-copy h2 {
+  color: #ffffff;
+}
+
+#page-faithful-talent .faithful-context-card p,
+#page-faithful-talent .faithful-section-head p,
+#page-faithful-talent .faithful-internships-copy p,
+#page-faithful-talent .faithful-pathway-card p,
+#page-faithful-talent .faithful-impact-card p {
+  margin: 22px 0 0;
+  color: #52617c;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.75;
+}
+
+#page-faithful-talent .faithful-context-card-dark p,
+#page-faithful-talent .faithful-internships-copy p {
+  color: rgba(239,246,255,.78);
+}
+
+#page-faithful-talent .faithful-context-card a {
+  color: #102b68;
+  font-weight: 650;
+  border-bottom: 1px solid rgba(16,43,104,.28);
+}
+
+#page-faithful-talent .faithful-pathways-section,
+#page-faithful-talent .faithful-impact-section {
+  background: #ffffff;
+}
+
+#page-faithful-talent .faithful-section-head {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+#page-faithful-talent .faithful-pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#page-faithful-talent .faithful-pathway-card,
+#page-faithful-talent .faithful-impact-card {
+  min-height: 300px;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(16,43,104,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,250,255,.96));
+  box-shadow: 0 24px 62px rgba(16,43,104,.08);
+  transition: transform .24s var(--ease-out-expo), box-shadow .24s ease, border-color .24s ease;
+}
+
+#page-faithful-talent .faithful-pathway-card:hover,
+#page-faithful-talent .faithful-impact-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16,43,104,.20);
+  box-shadow: 0 30px 72px rgba(16,43,104,.12);
+}
+
+#page-faithful-talent .faithful-pathway-card h3,
+#page-faithful-talent .faithful-impact-card h3 {
+  margin: 0;
+  color: #071329;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+#page-faithful-talent .faithful-pathway-card-wide {
+  grid-column: span 1;
+  background:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(135deg, #071329 0%, #0a2141 58%, #102b68 100%);
+  background-size: 52px 52px, 52px 52px, auto;
+}
+
+#page-faithful-talent .faithful-pathway-card-wide h3,
+#page-faithful-talent .faithful-pathway-card-wide p {
+  color: #ffffff;
+}
+
+#page-faithful-talent .faithful-pathway-card-wide p {
+  color: rgba(239,246,255,.78);
+}
+
+#page-faithful-talent .faithful-internships-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(70px, 9vw, 116px) 0;
+  background:
+    linear-gradient(90deg, rgba(3,11,27,.90), rgba(3,11,27,.66)),
+    url('../assets/images/faithful_talent.webp') center / cover no-repeat;
+  color: #ffffff;
+}
+
+#page-faithful-talent .faithful-internships-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .16;
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+#page-faithful-talent .faithful-internships-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: end;
+}
+
+#page-faithful-talent .faithful-internships-copy {
+  max-width: 820px;
+}
+
+#page-faithful-talent .faithful-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#page-faithful-talent .faithful-impact-card {
+  min-height: 240px;
+}
+
+#page-faithful-talent .faithful-impact-actions {
+  margin-top: 28px;
+}
+
+@media (max-width: 1080px) {
+  #page-faithful-talent {
+    --faithful-rail: min(1120px, calc(100% - (var(--site-gutter, 24px) * 2)));
+  }
+
+  #page-faithful-talent .faithful-hero-inner,
+  #page-faithful-talent .faithful-internships-inner {
+    grid-template-columns: 1fr;
+  }
+
+  #page-faithful-talent .faithful-hero-panel {
+    max-width: 420px;
+  }
+
+  #page-faithful-talent .faithful-context-grid,
+  #page-faithful-talent .faithful-pathways-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #page-faithful-talent .faithful-context-card,
+  #page-faithful-talent .faithful-pathway-card,
+  #page-faithful-talent .faithful-impact-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  #page-faithful-talent .faithful-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 96px 0 44px;
+    background-position: 58% center;
+  }
+
+  #page-faithful-talent .faithful-hero h1 {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+
+  #page-faithful-talent .faithful-hero p,
+  #page-faithful-talent .faithful-context-card p,
+  #page-faithful-talent .faithful-section-head p,
+  #page-faithful-talent .faithful-internships-copy p,
+  #page-faithful-talent .faithful-pathway-card p,
+  #page-faithful-talent .faithful-impact-card p {
+    font-size: 15px;
+  }
+
+  #page-faithful-talent .faithful-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #page-faithful-talent .faithful-hero-actions .hero-cta,
+  #page-faithful-talent .faithful-impact-actions .hero-cta {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #page-faithful-talent .faithful-context-section,
+  #page-faithful-talent .faithful-pathways-section,
+  #page-faithful-talent .faithful-internships-section,
+  #page-faithful-talent .faithful-impact-section {
+    padding-top: 54px;
+    padding-bottom: 58px;
+  }
+
+  #page-faithful-talent .faithful-context-card,
+  #page-faithful-talent .faithful-pathway-card,
+  #page-faithful-talent .faithful-impact-card {
+    padding: 24px;
+  }
+
+  #page-faithful-talent .faithful-impact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- CAREER CONFERENCES ---------- */
+#page-career-conferences {
+  --career-rail: min(1440px, calc(100% - (var(--site-gutter-wide, 48px) * 2)));
+  background: #f7faff;
+}
+
+#page-career-conferences .container {
+  width: var(--career-rail);
+}
+
+#page-career-conferences .career-conf-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(112px, 14vh, 154px) 0 clamp(72px, 9vh, 104px);
+  color: #ffffff;
+  background:
+    linear-gradient(90deg, rgba(3,11,27,.74) 0%, rgba(3,11,27,.48) 48%, rgba(3,11,27,.20) 100%),
+    url('../assets/images/Career Conference Collage/20260203_190255.jpg') center / cover no-repeat;
+}
+
+#page-career-conferences .career-conf-hero::before,
+#page-career-conferences .career-conf-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#page-career-conferences .career-conf-hero::before {
+  opacity: .20;
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+#page-career-conferences .career-conf-hero::after {
+  background:
+    radial-gradient(ellipse at 24% 42%, rgba(3,11,27,.42), transparent 48%),
+    radial-gradient(ellipse at 72% 22%, rgba(143,208,255,.12), transparent 34%),
+    linear-gradient(180deg, rgba(3,11,27,.02) 0%, rgba(3,11,27,.08) 54%, rgba(3,11,27,.42) 100%);
+}
+
+#page-career-conferences .career-conf-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+#page-career-conferences .career-conf-hero-copy {
+  max-width: 820px;
+}
+
+#page-career-conferences .career-conf-hero h1 {
+  position: relative;
+  display: inline-block;
+  max-width: 12ch;
+  margin: 0 0 22px;
+  color: #ffffff;
+  font-size: clamp(48px, 6.4vw, 96px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  text-shadow:
+    0 10px 28px rgba(0,0,0,.58),
+    0 24px 58px rgba(0,0,0,.40),
+    0 0 42px rgba(7,19,41,.30);
+}
+
+#page-career-conferences .career-conf-hero h1 .word {
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity .5s var(--ease-out-expo),
+    transform .5s var(--ease-out-expo);
+}
+
+#page-career-conferences .career-conf-hero h1 .word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#page-career-conferences .career-conf-hero h1 .word::before,
+#page-career-conferences .career-conf-hero h1 .word::after {
+  content: none;
+}
+
+#page-career-conferences .career-conf-hero h1 .letter {
+  display: inline-block;
+  position: relative;
+}
+
+#page-career-conferences .career-conf-hero p {
+  max-width: 56ch;
+  margin: 0;
+  color: rgba(239,246,255,.84);
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.65;
+}
+
+#page-career-conferences .career-conf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(26px, 4vh, 38px);
+}
+
+#page-career-conferences .career-conf-body {
+  background: #f7faff;
+}
+
+#page-career-conferences .career-conf-intro,
+#page-career-conferences .career-conf-expect {
+  padding: clamp(68px, 9vw, 118px) 0;
+}
+
+#page-career-conferences .career-conf-intro {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f7faff 58%, #edf4fb 100%);
+  border-bottom: 1px solid rgba(16,43,104,.08);
+}
+
+#page-career-conferences .career-conf-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .68fr) minmax(520px, 1fr);
+  gap: clamp(34px, 6vw, 86px);
+  align-items: center;
+}
+
+#page-career-conferences .career-conf-section-copy h2,
+#page-career-conferences .career-conf-section-head h2 {
+  margin: 0;
+  color: #071329;
+  font-size: clamp(34px, 4.5vw, 66px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+#page-career-conferences .career-conf-section-copy p {
+  max-width: 66ch;
+  margin: 22px 0 0;
+  color: #52617c;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.75;
+}
+
+#page-career-conferences .career-conf-photo {
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(16,43,104,.12);
+  background: #dfefff;
+  box-shadow:
+    0 34px 86px rgba(16,43,104,.20),
+    0 10px 24px rgba(7,19,41,.10);
+}
+
+#page-career-conferences .career-conf-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#page-career-conferences .career-conf-mobile-carousel {
+  display: none;
+}
+
+#page-career-conferences .career-conf-attendance-section {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(68px, 8vw, 104px) 0;
+  background:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(135deg, #071329 0%, #0a2141 58%, #102b68 100%);
+  background-size: 52px 52px, 52px 52px, auto;
+  color: #ffffff;
+}
+
+#page-career-conferences .career-conf-attendance-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(143,208,255,.18), transparent 34%),
+    radial-gradient(ellipse at 88% 78%, rgba(255,255,255,.09), transparent 32%);
+  pointer-events: none;
+}
+
+#page-career-conferences .career-conf-attendance-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(300px, .42fr) minmax(0, 1fr);
+  gap: clamp(26px, 4vw, 58px);
+  align-items: stretch;
+}
+
+#page-career-conferences .career-conf-attendance-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 360px;
+  padding: clamp(28px, 4vw, 44px);
+  border: 1px solid rgba(255,255,255,.18);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.055));
+  box-shadow: 0 28px 76px rgba(0,0,0,.24);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+#page-career-conferences .career-conf-attendance-total h2 {
+  max-width: 10ch;
+  margin: 0 0 26px;
+  color: #ffffff;
+  font-size: clamp(30px, 3.4vw, 52px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+#page-career-conferences .career-conf-attendance-total strong {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  color: transparent;
+  font-size: clamp(58px, 8vw, 112px);
+  font-weight: 700;
+  line-height: .86;
+  letter-spacing: -0.06em;
+  background: linear-gradient(90deg, #ffffff 0%, #dfefff 35%, #8fd0ff 72%, #ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 20px 58px rgba(0,0,0,.26);
+}
+
+#page-career-conferences .career-conf-attendance-total > span {
+  display: block;
+  max-width: 28ch;
+  margin-top: 18px;
+  color: rgba(239,246,255,.72);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#page-career-conferences .career-conf-attendance-list {
+  display: grid;
+  align-content: stretch;
+  gap: 10px;
+}
+
+#page-career-conferences .career-conf-attendance-row {
+  display: grid;
+  grid-template-columns: minmax(118px, .34fr) minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 62px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.055);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+  transition: transform .22s var(--ease-out-expo), background .22s ease, border-color .22s ease;
+}
+
+#page-career-conferences .career-conf-attendance-row:hover {
+  transform: translateX(4px);
+  border-color: rgba(143,208,255,.28);
+  background: rgba(255,255,255,.085);
+}
+
+#page-career-conferences .career-conf-attendance-row time {
+  color: rgba(207,227,246,.66);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+#page-career-conferences .career-conf-attendance-row > span {
+  color: rgba(239,246,255,.88);
+  font-size: clamp(17px, 1.55vw, 23px);
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+#page-career-conferences .career-conf-stat-number {
+  display: inline-block;
+  min-width: 2.15ch;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  font-variant-numeric: tabular-nums;
+  transform-origin: center bottom;
+}
+
+#page-career-conferences .career-conf-attendance-total strong .career-conf-stat-number {
+  color: transparent;
+  background: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+#page-career-conferences .career-conf-stat-number.is-counting {
+  text-shadow:
+    0 0 22px rgba(143,208,255,.52),
+    0 0 46px rgba(143,208,255,.22);
+}
+
+#page-career-conferences .career-conf-attendance-row strong {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 7ch;
+  color: #ffffff;
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: -0.04em;
+  text-align: right;
+}
+
+#page-career-conferences .career-conf-attendance-row strong em {
+  color: rgba(207,227,246,.56);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 750;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+#page-career-conferences .career-conf-expect {
+  background: #ffffff;
+}
+
+#page-career-conferences .career-conf-section-head {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+#page-career-conferences .career-conf-expect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#page-career-conferences .career-conf-expect-card {
+  min-height: 260px;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(16,43,104,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,250,255,.96));
+  box-shadow: 0 24px 62px rgba(16,43,104,.08);
+  transition: transform .24s var(--ease-out-expo), box-shadow .24s ease, border-color .24s ease;
+}
+
+#page-career-conferences .career-conf-expect-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16,43,104,.20);
+  box-shadow: 0 30px 72px rgba(16,43,104,.12);
+}
+
+#page-career-conferences .career-conf-expect-card h3 {
+  margin: 0 0 18px;
+  color: #071329;
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+#page-career-conferences .career-conf-expect-card p {
+  max-width: 32ch;
+  margin: 0;
+  color: #52617c;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+#page-career-conferences .career-conf-expect-card-wide {
+  grid-column: span 2;
+  min-height: 220px;
+  background:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(135deg, #071329 0%, #0a2141 58%, #102b68 100%);
+  background-size: 52px 52px, 52px 52px, auto;
+}
+
+#page-career-conferences .career-conf-expect-card-wide h3,
+#page-career-conferences .career-conf-expect-card-wide p {
+  color: #ffffff;
+}
+
+#page-career-conferences .career-conf-expect-card-wide p {
+  color: rgba(239,246,255,.78);
+}
+
+@media (max-width: 1080px) {
+  #page-career-conferences {
+    --career-rail: min(1120px, calc(100% - (var(--site-gutter, 24px) * 2)));
+  }
+
+  #page-career-conferences .career-conf-intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #page-career-conferences .career-conf-attendance-inner {
+    grid-template-columns: 1fr;
+  }
+
+  #page-career-conferences .career-conf-attendance-total {
+    min-height: auto;
+  }
+
+  #page-career-conferences .career-conf-attendance-total h2 {
+    max-width: none;
+  }
+
+  #page-career-conferences .career-conf-expect-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  #page-career-conferences .career-conf-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: flex-end;
+    padding: 96px 0 52px;
+    background-position: 58% center;
+  }
+
+  #page-career-conferences .career-conf-hero h1 {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+
+  #page-career-conferences .career-conf-hero p,
+  #page-career-conferences .career-conf-section-copy p {
+    font-size: 15px;
+  }
+
+  #page-career-conferences .career-conf-actions,
+  #page-career-conferences .career-conf-actions .hero-cta {
+    width: 100%;
+  }
+
+  #page-career-conferences .career-conf-actions .hero-cta {
+    border-radius: 10px;
+  }
+
+  #page-career-conferences .career-conf-photo {
+    border-radius: 14px;
+    box-shadow:
+      0 22px 54px rgba(16,43,104,.18),
+      0 8px 18px rgba(7,19,41,.10);
+  }
+
+  #page-career-conferences .career-conf-photo-single {
+    display: none;
+  }
+
+  #page-career-conferences .career-conf-mobile-carousel {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    overflow: hidden;
+    background: #dfefff;
+  }
+
+  #page-career-conferences .career-conf-mobile-carousel img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.08) translateX(0);
+    animation: careerConfCarousel 25s ease-in-out infinite;
+  }
+
+  #page-career-conferences .career-conf-mobile-carousel img:nth-child(1) { animation-delay: 0s; }
+  #page-career-conferences .career-conf-mobile-carousel img:nth-child(2) { animation-delay: 5s; }
+  #page-career-conferences .career-conf-mobile-carousel img:nth-child(3) { animation-delay: 10s; }
+  #page-career-conferences .career-conf-mobile-carousel img:nth-child(4) { animation-delay: 15s; }
+  #page-career-conferences .career-conf-mobile-carousel img:nth-child(5) { animation-delay: 20s; }
+
+  #page-career-conferences .career-conf-expect-card {
+    border-radius: 0;
+  }
+
+  #page-career-conferences .career-conf-expect-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #page-career-conferences .career-conf-intro,
+  #page-career-conferences .career-conf-attendance-section,
+  #page-career-conferences .career-conf-expect {
+    padding-top: 54px;
+    padding-bottom: 58px;
+  }
+
+  #page-career-conferences .career-conf-expect-card,
+  #page-career-conferences .career-conf-expect-card-wide {
+    grid-column: auto;
+    min-height: auto;
+    padding: 24px;
+  }
+
+  #page-career-conferences .career-conf-attendance-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 14px;
+    min-height: auto;
+    padding: 14px;
+  }
+
+  #page-career-conferences .career-conf-attendance-row time {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  #page-career-conferences .career-conf-attendance-row > span {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    font-size: 16px;
+  }
+
+  #page-career-conferences .career-conf-attendance-row strong {
+    grid-column: 2 / 3;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    font-size: 28px;
+  }
+
+  #page-career-conferences .career-conf-attendance-row strong em {
+    font-size: 9px;
+  }
+
+}
+
+@keyframes careerConfCarousel {
+  0% {
+    opacity: 0;
+    transform: scale(1.08) translateX(0);
+  }
+  5%, 18% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+    transform: scale(1.14) translateX(-3%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.14) translateX(-3%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page-career-conferences .career-conf-mobile-carousel img {
+    animation: none;
+  }
+
+  #page-career-conferences .career-conf-mobile-carousel img:first-child {
+    opacity: 1;
+  }
+}
+
+/* ---------- WHO WE ARE ---------- */
+#page-who-we-are {
+  --who-rail: min(1440px, calc(100% - (var(--site-gutter-wide, 48px) * 2)));
+  background: #f7faff;
+}
+
+#page-who-we-are .container {
+  width: var(--who-rail);
+}
+
+#page-who-we-are .who-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(110px, 14vh, 150px) 0 clamp(64px, 9vh, 96px);
+  color: #ffffff;
+  background:
+    linear-gradient(90deg, rgba(3,11,27,.78) 0%, rgba(3,11,27,.56) 52%, rgba(3,11,27,.28) 100%),
+    url('../assets/images/Career Conference Collage/photo-collage.png') center / cover no-repeat;
+}
+
+#page-who-we-are .who-hero::before,
+#page-who-we-are .who-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#page-who-we-are .who-hero::before {
+  opacity: .10;
+  background:
+    linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+#page-who-we-are .who-hero::after {
+  background:
+    radial-gradient(ellipse at 22% 42%, rgba(3,11,27,.46), transparent 46%),
+    radial-gradient(ellipse at 18% 18%, rgba(143,208,255,.12), transparent 34%),
+    linear-gradient(180deg, rgba(3,11,27,.08) 0%, rgba(3,11,27,.08) 52%, rgba(3,11,27,.48) 100%);
+}
+
+#page-who-we-are .who-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+#page-who-we-are .who-hero-copy {
+  max-width: 780px;
+}
+
+#page-who-we-are .who-kicker {
+  color: rgba(207,227,246,.86);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .13em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#page-who-we-are .who-hero h1 {
+  position: relative;
+  display: inline-block;
+  max-width: 11ch;
+  margin: 18px 0 20px;
+  color: #ffffff;
+  font-size: clamp(46px, 6.2vw, 92px);
+  font-weight: 700;
+  line-height: .98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  isolation: isolate;
+  text-shadow:
+    0 10px 28px rgba(0,0,0,0.58),
+    0 24px 58px rgba(0,0,0,0.40),
+    0 0 42px rgba(7,19,41,0.30);
+}
+
+#page-who-we-are .who-hero h1 .word {
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo);
+}
+
+#page-who-we-are .who-hero h1 .word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#page-who-we-are .who-hero h1 .word::before,
+#page-who-we-are .who-hero h1 .word::after {
+  content: none;
+}
+
+#page-who-we-are .who-hero h1 .letter {
+  display: inline-block;
+  position: relative;
+}
+
+#page-who-we-are .who-hero-text-box {
+  max-width: 62ch;
+  padding: clamp(20px, 2.6vw, 30px);
+  border: 1px solid rgba(255,255,255,.46);
+  border-radius: 14px;
+  background: rgba(239,246,255,.70);
+  box-shadow:
+    0 26px 70px rgba(0,0,0,.22),
+    0 8px 20px rgba(7,19,41,.14);
+  backdrop-filter: blur(16px) saturate(1.18);
+  -webkit-backdrop-filter: blur(16px) saturate(1.18);
+}
+
+#page-who-we-are .who-hero-text-box p {
+  max-width: 58ch;
+  margin: 0 0 14px;
+  color: #071329;
+  font-size: clamp(15px, 1.12vw, 18px);
+  line-height: 1.72;
+}
+
+#page-who-we-are .who-hero-text-box p:last-child {
+  margin-bottom: 0;
+}
+
+#page-who-we-are .who-hero-text-box em {
+  color: inherit;
+}
+
+#page-who-we-are .who-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: clamp(26px, 4vh, 38px);
+}
+
+#page-who-we-are .who-hero-actions .hero-cta,
+#page-who-we-are .who-hero-secondary {
+  border-radius: 6px;
+}
+
+#page-who-we-are .who-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  min-height: 44px;
+  padding: 10px 24px;
+  border: 1.5px solid rgba(255,255,255,.78);
+  background: rgba(3,13,33,.28);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1;
+  backdrop-filter: blur(30px) saturate(1.35);
+  -webkit-backdrop-filter: blur(30px) saturate(1.35);
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.05),
+    inset 0 1px 0 rgba(255,255,255,.40),
+    inset 0 -1px 0 rgba(255,255,255,.10);
+  transition: transform .25s var(--ease-spring), background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+#page-who-we-are .who-hero-secondary:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.96);
+  background: rgba(3,13,33,.18);
+  box-shadow:
+    0 18px 36px rgba(5,14,34,.26),
+    0 0 26px rgba(226,232,240,.30),
+    inset 0 1px 0 rgba(255,255,255,.42);
+}
+
+#page-who-we-are .who-values-section,
+#page-who-we-are .who-team-section {
+  padding: clamp(68px, 9vw, 118px) 0;
+  background: #ffffff;
+}
+
+#page-who-we-are .who-focus-section {
+  padding: clamp(68px, 9vw, 118px) 0;
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f7faff 58%, #edf4fb 100%);
+  border-bottom: 1px solid rgba(16,43,104,.08);
+}
+
+#page-who-we-are .who-focus-grid {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+#page-who-we-are .who-section-copy h2,
+#page-who-we-are .who-focus-head h2,
+#page-who-we-are .who-values-head h2,
+#page-who-we-are .who-team-head h2 {
+  margin: 14px 0 0;
+  color: #071329;
+  font-size: clamp(32px, 4.3vw, 64px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+#page-who-we-are .who-section-copy p {
+  max-width: 58ch;
+  margin: 20px 0 0;
+  color: #52617c;
+  font-size: clamp(16px, 1.3vw, 18px);
+  line-height: 1.7;
+}
+
+#page-who-we-are .who-kicker {
+  color: #5d7fa8;
+}
+
+#page-who-we-are .who-principles {
+  display: grid;
+  gap: 12px;
+}
+
+#page-who-we-are .who-story-stack {
+  display: grid;
+  gap: 12px;
+}
+
+#page-who-we-are .who-principle {
+  display: grid;
+  grid-template-columns: minmax(220px, .34fr) minmax(0, 1fr);
+  gap: 10px 24px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(16,43,104,.12);
+}
+
+#page-who-we-are .who-principle:last-child {
+  border-bottom: 1px solid rgba(16,43,104,.12);
+}
+
+#page-who-we-are .who-principle span {
+  grid-row: span 2;
+  color: rgba(16,43,104,.34);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+#page-who-we-are .who-principle strong {
+  color: #071329;
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 650;
+  line-height: 1.05;
+}
+
+#page-who-we-are .who-principle p {
+  max-width: 62ch;
+  margin: 0;
+  color: #52617c;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+#page-who-we-are .who-standard {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(70px, 10vw, 126px) 0;
+  background:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(135deg, #071329 0%, #0a2141 58%, #102b68 100%);
+  background-size: 52px 52px, 52px 52px, auto;
+  color: #ffffff;
+}
+
+#page-who-we-are .who-standard-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+#page-who-we-are .who-standard blockquote {
+  margin: 0;
+  text-align: center;
+}
+
+#page-who-we-are .who-standard blockquote span {
+  display: block;
+  max-width: 20ch;
+  margin: 0 auto;
+  color: #ffffff;
+  font-size: clamp(34px, 5vw, 76px);
+  font-weight: 650;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+#page-who-we-are .who-standard blockquote mark {
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, transparent 58%, rgba(143,208,255,.26) 58%),
+    linear-gradient(90deg, rgba(159,184,217,.18), rgba(255,255,255,.08));
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 .08em;
+  text-shadow:
+    0 0 24px rgba(143,208,255,.24),
+    0 12px 34px rgba(0,0,0,.36);
+}
+
+#page-who-we-are .who-standard cite {
+  display: block;
+  margin-top: 22px;
+  color: rgba(207,227,246,.70);
+  font-size: 13px;
+  font-style: normal;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+#page-who-we-are .who-values-head,
+#page-who-we-are .who-team-head {
+  max-width: 760px;
+  margin-bottom: 36px;
+}
+
+#page-who-we-are .who-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#page-who-we-are .who-value {
+  min-height: 320px;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(16,43,104,.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,250,255,.94));
+  box-shadow: 0 24px 62px rgba(16,43,104,.08);
+  transition: transform .24s var(--ease-out-expo), box-shadow .24s ease;
+}
+
+#page-who-we-are .who-value:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 72px rgba(16,43,104,.12);
+}
+
+#page-who-we-are .who-value img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  margin-bottom: 36px;
+}
+
+#page-who-we-are .who-value h3 {
+  margin: 0 0 12px;
+  color: #071329;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+#page-who-we-are .who-value strong {
+  display: block;
+  margin-bottom: 14px;
+  color: #5d7fa8;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#page-who-we-are .who-value p {
+  max-width: 28ch;
+  margin: 0;
+  color: #52617c;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+#page-who-we-are .who-team-section {
+  background:
+    linear-gradient(180deg, #f7faff 0%, #ffffff 100%);
+  border-top: 1px solid rgba(16,43,104,.08);
+}
+
+#page-who-we-are .who-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#page-who-we-are .who-team-card {
+  position: relative;
+  display: grid;
+  min-height: 280px;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(16,43,104,.12);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.94), rgba(239,246,255,.92));
+  color: #071329;
+  box-shadow: 0 24px 62px rgba(16,43,104,.08);
+  transition: transform .24s var(--ease-out-expo), box-shadow .24s ease, border-color .24s ease;
+}
+
+#page-who-we-are .who-team-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16,43,104,.20);
+  box-shadow: 0 30px 72px rgba(16,43,104,.12);
+}
+
+#page-who-we-are .who-team-face {
+  display: grid;
+  place-items: center;
+  width: clamp(86px, 8vw, 116px);
+  aspect-ratio: 1;
+  margin-bottom: 38px;
+  border: 1px solid rgba(255,255,255,.34);
+  background:
+    linear-gradient(135deg, #071329 0%, #102b68 58%, #9fb8d9 100%);
+  color: #ffffff;
+  font-size: clamp(26px, 3vw, 42px);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  box-shadow: 0 20px 50px rgba(16,43,104,.16);
+}
+
+#page-who-we-are .who-team-name,
+#page-who-we-are .who-team-role,
+#page-who-we-are .who-team-link {
+  display: block;
+}
+
+#page-who-we-are .who-team-name {
+  color: #071329;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+#page-who-we-are .who-team-role {
+  margin-top: 8px;
+  color: #52617c;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+#page-who-we-are .who-team-link {
+  margin-top: 26px;
+  color: #102b68;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+#page-who-we-are .who-link {
+  color: rgba(239,246,255,.86);
+  font-size: 15px;
+  font-weight: 650;
+  border-bottom: 1px solid rgba(239,246,255,.46);
+  padding-bottom: 4px;
+}
+
+#page-who-we-are .who-link:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+@media (max-width: 980px) {
+  #page-who-we-are {
+    --who-rail: min(1120px, calc(100% - (var(--site-gutter, 24px) * 2)));
+  }
+
+  #page-who-we-are .who-hero-inner,
+  #page-who-we-are .who-focus-grid,
+  #page-who-we-are .who-standard-inner {
+    grid-template-columns: 1fr;
+  }
+
+  #page-who-we-are .who-values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #page-who-we-are .who-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #page-who-we-are .who-value,
+  #page-who-we-are .who-team-card {
+    min-height: auto;
+  }
+
+}
+
+@media (max-width: 640px) {
+  #page-who-we-are .who-hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 108px 0 58px;
+    background-position: 58% center;
+  }
+
+  #page-who-we-are .who-hero h1 {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+
+  #page-who-we-are .who-hero-text-box p,
+  #page-who-we-are .who-section-copy p {
+    font-size: 15px;
+  }
+
+  #page-who-we-are .who-hero-text-box {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  #page-who-we-are .who-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #page-who-we-are .who-hero-actions .hero-cta,
+  #page-who-we-are .who-hero-secondary {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  #page-who-we-are .who-values-section,
+  #page-who-we-are .who-team-section,
+  #page-who-we-are .who-focus-section,
+  #page-who-we-are .who-standard {
+    padding-top: 54px;
+    padding-bottom: 58px;
+  }
+
+  #page-who-we-are .who-standard blockquote span {
+    max-width: none;
+    font-size: clamp(30px, 9vw, 44px);
+  }
+
+  #page-who-we-are .who-values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #page-who-we-are .who-principle {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  #page-who-we-are .who-value,
+  #page-who-we-are .who-team-card {
+    padding: 24px;
+  }
+
+}

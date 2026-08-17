@@ -106,5 +106,6 @@
   background: #0A3463;
   color: #ffffff;
   border-color: rgba(10,52,99,.45);
-  border-radius: 999px;
+  border-radius: 6px;
+  font-weight: 600;
 }

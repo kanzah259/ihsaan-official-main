@@ -70,29 +70,32 @@ function initHeroParallax() {
 
 // ---------- HERO TEXT REVEAL ----------
 function initHeroTextReveal() {
-  const heroTitle = document.getElementById("heroTitle");
-  if (!heroTitle) return;
+  const heroTitles = document.querySelectorAll("#heroTitle, [data-hero-title]");
+  if (!heroTitles.length) return;
 
-  const originalHTML = heroTitle.innerHTML;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const words = originalHTML.split(/(\s+|<br\s*\/?>)/);
-  heroTitle.innerHTML = words.map(word => {
-    if (word.match(/<br\s*\/?>/)) return word;
-    if (word.match(/^\s+$/)) return word;
-    const letters = Array.from(word)
-      .map(letter => `<span class="letter">${letter}</span>`)
-      .join("");
-    return `<span class="word">${letters}</span>`;
-  }).join("");
 
-  const wordEls = heroTitle.querySelectorAll(".word");
-  if (reducedMotion) {
-    wordEls.forEach(word => word.classList.add("visible"));
-    return;
-  }
+  heroTitles.forEach(heroTitle => {
+    const originalHTML = heroTitle.innerHTML;
+    const words = originalHTML.split(/(\s+|<br\s*\/?>)/);
+    heroTitle.innerHTML = words.map(word => {
+      if (word.match(/<br\s*\/?>/)) return word;
+      if (word.match(/^\s+$/)) return word;
+      const letters = Array.from(word)
+        .map(letter => `<span class="letter">${letter}</span>`)
+        .join("");
+      return `<span class="word">${letters}</span>`;
+    }).join("");
 
-  wordEls.forEach((word, i) => {
-    setTimeout(() => word.classList.add("visible"), 300 + i * 80);
+    const wordEls = heroTitle.querySelectorAll(".word");
+    if (reducedMotion) {
+      wordEls.forEach(word => word.classList.add("visible"));
+      return;
+    }
+
+    wordEls.forEach((word, i) => {
+      setTimeout(() => word.classList.add("visible"), 300 + i * 80);
+    });
   });
 }
 
