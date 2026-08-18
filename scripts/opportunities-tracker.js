@@ -2,11 +2,18 @@ const trackerFallbackOpportunities = [];
 
 function initOpportunitiesTracker() {
   const search = document.getElementById("opportunity-search");
-  const filters = document.querySelectorAll("[data-tracker-filter]");
+  const typeFilter = document.getElementById("opportunity-type-filter");
+  const industryFilter = document.getElementById("opportunity-industry-filter");
+  const locationFilter = document.getElementById("opportunity-location-filter");
+  const workLocationFilter = document.getElementById("opportunity-work-location-filter");
+  const remunerationFilter = document.getElementById("opportunity-remuneration-filter");
+  const sort = document.getElementById("opportunity-sort");
   const grid = document.getElementById("opportunity-grid");
   const count = document.getElementById("opportunity-count");
   const countLabel = document.getElementById("opportunity-count-label");
+  const resultsSummary = document.getElementById("opportunity-results-summary");
   const empty = document.getElementById("opportunity-empty");
+  const loadMoreButton = document.getElementById("opportunity-load-more");
   const dialog = document.getElementById("member-access-dialog");
   const signInView = document.getElementById("member-sign-in-view");
   const signInForm = document.getElementById("member-sign-in-form");
@@ -43,8 +50,13 @@ function initOpportunitiesTracker() {
   const client = isConfigured && window.supabase
     ? window.supabase.createClient(config.url, config.publishableKey, { auth: { flowType: "pkce", detectSessionInUrl: true } })
     : null;
-  let selectedFilter = "all";
   let opportunities = [...trackerFallbackOpportunities];
+  let publicOpportunities = [];
+  let totalResults = 0;
+  let nextCursor = null;
+  let searchRequestVersion = 0;
+  let searchTimer = null;
+  let serverSearchAvailable = true;
   let trackerRole = null;
   let currentUser = null;
 
@@ -90,11 +102,14 @@ function initOpportunitiesTracker() {
   const opportunityMarkup = (opportunity, index) => {
     const initials = (opportunity.organisation_name || "IHSAAN").trim().charAt(0).toUpperCase();
     const colours = ["blue", "gold", "lilac", "coral", "green", "ink"];
+    const deadline = opportunity.deadline
+      ? `Closes ${new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short" }).format(new Date(`${opportunity.deadline}T00:00:00`))}`
+      : "Open";
     const applicationAction = opportunity.application_url
       ? `<a class="opportunity-action" href="${safeUrl(opportunity.application_url)}" target="_blank" rel="noopener">View opportunity <span aria-hidden="true">→</span></a>`
       : '<span class="opportunity-action opportunity-action--unavailable">Application details coming soon</span>';
     return `<article class="opportunity-card">
-      <div class="opportunity-card-top"><span class="opportunity-type">${escapeHtml(opportunity.opportunity_type)}</span><span class="opportunity-deadline">${escapeHtml(opportunity.remuneration)}</span></div>
+      <div class="opportunity-card-top"><span class="opportunity-type">${escapeHtml(opportunity.opportunity_type)}</span><span class="opportunity-deadline">${escapeHtml(deadline)}</span></div>
       <div class="opportunity-mark opportunity-mark--${colours[index % colours.length]}" aria-hidden="true">${escapeHtml(initials)}</div>
       <h3>${escapeHtml(opportunity.title)}</h3>
       <p class="opportunity-company">${escapeHtml(opportunity.organisation_name)}</p>
@@ -103,24 +118,67 @@ function initOpportunitiesTracker() {
     </article>`;
   };
 
-  const updateResults = () => {
-    const query = search.value.trim().toLowerCase();
-    const visible = opportunities.filter((opportunity) => {
-      const searchable = [opportunity.title, opportunity.organisation_name, opportunity.opportunity_type, opportunity.industry, opportunity.location, opportunity.work_location_type].join(" ").toLowerCase();
-      return (selectedFilter === "all" || opportunity.opportunity_type === selectedFilter) && searchable.includes(query);
-    });
-    grid.innerHTML = visible.map(opportunityMarkup).join("");
-    count.textContent = String(visible.length);
-    countLabel.textContent = visible.length === 1 ? "opportunity" : "opportunities";
-    empty.hidden = visible.length !== 0;
+  const currentSearchOptions = () => ({
+    query: search.value.trim(),
+    opportunityType: typeFilter?.value || null,
+    industry: industryFilter?.value.trim() || null,
+    location: locationFilter?.value.trim() || null,
+    workLocationType: workLocationFilter?.value || null,
+    remuneration: remunerationFilter?.value || null,
+    sort: sort?.value || "relevance"
+  });
+
+  const updateResultMeta = () => {
+    const options = currentSearchOptions();
+    count.textContent = String(totalResults);
+    countLabel.textContent = totalResults === 1 ? "opportunity" : "opportunities";
+    empty.textContent = options.query || options.opportunityType || options.industry || options.location || options.workLocationType || options.remuneration
+      ? "No opportunities match those search options. Try changing or clearing a filter."
+      : "No opportunities have been published yet. Check back soon.";
+    empty.hidden = totalResults !== 0;
+    if (resultsSummary) {
+      const isRanked = options.query && options.sort === "relevance";
+      resultsSummary.innerHTML = isRanked
+        ? 'Sorted by relevance <span aria-hidden="true">↓</span>'
+        : 'Showing most recently added <span aria-hidden="true">↓</span>';
+    }
+    if (loadMoreButton) loadMoreButton.hidden = !nextCursor || publicOpportunities.length >= totalResults;
   };
 
-  const loadOpportunities = async () => {
-    if (!client) return updateResults();
-    grid.innerHTML = '<p class="tracker-loading">Loading opportunities…</p>';
+  const renderPublicResults = (results, append = false) => {
+    const startIndex = append ? publicOpportunities.length : 0;
+    if (append) {
+      grid.insertAdjacentHTML("beforeend", results.map((opportunity, index) => opportunityMarkup(opportunity, startIndex + index)).join(""));
+      publicOpportunities.push(...results);
+    } else {
+      publicOpportunities = [...results];
+      grid.innerHTML = results.map(opportunityMarkup).join("");
+    }
+    updateResultMeta();
+  };
+
+  const updateLegacyResults = () => {
+    const options = currentSearchOptions();
+    const query = options.query.toLowerCase();
+    const visible = opportunities.filter((opportunity) => {
+      const searchable = [opportunity.title, opportunity.organisation_name, opportunity.opportunity_type, opportunity.industry, opportunity.location, opportunity.work_location_type, opportunity.description].join(" ").toLowerCase();
+      return (!options.opportunityType || opportunity.opportunity_type === options.opportunityType)
+        && (!options.industry || opportunity.industry?.toLowerCase().includes(options.industry.toLowerCase()))
+        && (!options.location || opportunity.location?.toLowerCase().includes(options.location.toLowerCase()))
+        && (!options.workLocationType || opportunity.work_location_type === options.workLocationType)
+        && (!options.remuneration || opportunity.remuneration === options.remuneration)
+        && searchable.includes(query);
+    });
+    totalResults = visible.length;
+    nextCursor = null;
+    renderPublicResults(visible);
+  };
+
+  const loadLegacyOpportunities = async () => {
+    if (!client) return updateLegacyResults();
     const { data, error } = await client
       .from("opportunities")
-      .select("title, organisation_name, opportunity_type, industry, location, work_location_type, remuneration, application_url, created_at")
+      .select("id, title, organisation_name, opportunity_type, industry, location, work_location_type, remuneration, application_url, description, deadline, created_at")
       .eq("status", "approved")
       .order("created_at", { ascending: false });
     if (error) {
@@ -130,7 +188,81 @@ function initOpportunitiesTracker() {
       return;
     }
     opportunities = data;
-    updateResults();
+    updateLegacyResults();
+  };
+
+  const isMissingSearchFunction = (error) => error?.code === "PGRST202"
+    || error?.message?.includes("search_opportunities");
+
+  const loadOpportunities = async ({ append = false } = {}) => {
+    if (!client || !serverSearchAvailable) {
+      if (!append) await loadLegacyOpportunities();
+      return;
+    }
+
+    const requestVersion = ++searchRequestVersion;
+    const options = currentSearchOptions();
+    if (!append) {
+      nextCursor = null;
+      grid.innerHTML = '<p class="tracker-loading">Searching opportunities…</p>';
+      empty.hidden = true;
+      if (loadMoreButton) {
+        loadMoreButton.hidden = true;
+        loadMoreButton.disabled = false;
+        loadMoreButton.textContent = "Load more opportunities";
+      }
+    } else if (loadMoreButton) {
+      loadMoreButton.disabled = true;
+      loadMoreButton.textContent = "Loading…";
+    }
+
+    const { data, error } = await client.rpc("search_opportunities", {
+      p_query: options.query || null,
+      p_opportunity_type: options.opportunityType,
+      p_industry: options.industry,
+      p_location: options.location,
+      p_work_location_type: options.workLocationType,
+      p_remuneration: options.remuneration,
+      p_sort: options.sort,
+      p_page_size: 24,
+      p_cursor_rank: nextCursor?.rank ?? null,
+      p_cursor_created_at: nextCursor?.createdAt ?? null,
+      p_cursor_id: nextCursor?.id ?? null
+    });
+
+    if (requestVersion !== searchRequestVersion) return;
+    if (loadMoreButton) {
+      loadMoreButton.disabled = false;
+      loadMoreButton.textContent = "Load more opportunities";
+    }
+    if (error) {
+      if (isMissingSearchFunction(error)) {
+        serverSearchAvailable = false;
+        await loadLegacyOpportunities();
+        return;
+      }
+      if (!append) {
+        grid.innerHTML = '<p class="tracker-loading">We could not search the tracker. Please try again shortly.</p>';
+        count.textContent = "0";
+        countLabel.textContent = "opportunities";
+      }
+      return;
+    }
+
+    const results = data || [];
+    if (!append) totalResults = Number(results[0]?.total_count || 0);
+    const lastResult = results.at(-1);
+    nextCursor = lastResult ? {
+      rank: Number(lastResult.search_rank || 0),
+      createdAt: lastResult.created_at,
+      id: lastResult.id
+    } : null;
+    renderPublicResults(results, append);
+  };
+
+  const scheduleOpportunitySearch = () => {
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => loadOpportunities(), 300);
   };
 
   const showSignIn = (message = "") => {
@@ -248,12 +380,17 @@ function initOpportunitiesTracker() {
     membersList.innerHTML = data.length ? data.map(memberFormMarkup).join("") : '<p class="tracker-loading">No contributor emails have been authorised yet.</p>';
   };
 
-  search.addEventListener("input", updateResults);
-  filters.forEach((filter) => filter.addEventListener("click", () => {
-    selectedFilter = filter.dataset.trackerFilter;
-    filters.forEach((item) => item.classList.toggle("is-active", item === filter));
-    updateResults();
-  }));
+  search.addEventListener("input", scheduleOpportunitySearch);
+  [industryFilter, locationFilter].forEach((control) => control?.addEventListener("input", scheduleOpportunitySearch));
+  [typeFilter, workLocationFilter, remunerationFilter, sort].forEach((control) => {
+    control?.addEventListener("change", () => {
+      window.clearTimeout(searchTimer);
+      loadOpportunities();
+    });
+  });
+  loadMoreButton?.addEventListener("click", () => {
+    if (nextCursor) loadOpportunities({ append: true });
+  });
   accountButton?.addEventListener("click", openAccount);
   document.querySelectorAll("[data-dialog-close]").forEach((button) => button.addEventListener("click", () => dialog?.close()));
   workspaceTabs.forEach((tab) => tab.addEventListener("click", () => setWorkspaceView(tab.dataset.workspaceView)));

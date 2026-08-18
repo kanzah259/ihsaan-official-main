@@ -30,25 +30,37 @@
           <label class="tracker-search">
             <span class="sr-only">Search opportunities</span>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"></circle><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
-            <input id="opportunity-search" type="search" placeholder="Search by role, company, or area" autocomplete="off">
+            <input id="opportunity-search" type="search" placeholder="Search roles, firms, industries, or locations" autocomplete="off" maxlength="120">
           </label>
-          <div class="tracker-filter-row" aria-label="Filter opportunities by type">
-            <button class="tracker-filter is-active" type="button" data-tracker-filter="all">All opportunities</button>
-            <button class="tracker-filter" type="button" data-tracker-filter="Internship">Internships</button>
-            <button class="tracker-filter" type="button" data-tracker-filter="Graduate role">Graduate roles</button>
-            <button class="tracker-filter" type="button" data-tracker-filter="Scholarship">Scholarships</button>
+          <div class="tracker-filter-controls" aria-label="Filter and sort opportunities">
+            <label class="tracker-select"><span>Type</span><select id="opportunity-type-filter">
+              <option value="">All types</option>
+              <option>Internship</option><option>Graduate role</option><option>Scholarship</option><option>Apprenticeship</option><option>Full-time</option><option>Part-time</option><option>Freelance</option><option>Volunteering</option><option>Programme</option><option>Other</option>
+            </select></label>
+            <label class="tracker-select"><span>Industry</span><input id="opportunity-industry-filter" type="text" placeholder="Any industry" autocomplete="off" maxlength="80"></label>
+            <label class="tracker-select"><span>Location</span><input id="opportunity-location-filter" type="text" placeholder="Any location" autocomplete="off" maxlength="80"></label>
+            <label class="tracker-select"><span>Work location</span><select id="opportunity-work-location-filter">
+              <option value="">Anywhere</option><option>On-site</option><option>Hybrid</option><option>Remote</option>
+            </select></label>
+            <label class="tracker-select"><span>Remuneration</span><select id="opportunity-remuneration-filter">
+              <option value="">All</option><option>Paid</option><option>Stipend provided</option><option>Unpaid</option>
+            </select></label>
+            <label class="tracker-select"><span>Sort</span><select id="opportunity-sort">
+              <option value="relevance">Most relevant</option><option value="newest">Most recently added</option>
+            </select></label>
           </div>
         </div>
 
         <div class="tracker-results-bar">
           <p><strong id="opportunity-count">0</strong> <span id="opportunity-count-label">opportunities</span></p>
-          <p class="tracker-sort-label">Showing most recently added <span aria-hidden="true">↓</span></p>
+          <p class="tracker-sort-label" id="opportunity-results-summary">Showing most recently added <span aria-hidden="true">↓</span></p>
         </div>
 
         <div class="opportunity-grid" id="opportunity-grid" aria-live="polite">
           <p class="tracker-loading">Loading opportunities…</p>
         </div>
         <p class="tracker-empty" id="opportunity-empty" hidden>No opportunities have been published yet. Check back soon.</p>
+        <div class="tracker-pagination"><button class="tracker-load-more" id="opportunity-load-more" type="button" hidden>Load more opportunities</button></div>
       </section>
 
     </div>
