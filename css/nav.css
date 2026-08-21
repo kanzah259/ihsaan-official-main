@@ -143,7 +143,6 @@
 .dropdown-menu a:hover{
   background: rgba(255,255,255,.10);
 }
-
 .nav-icons{
   display:flex;
   justify-content:flex-end;

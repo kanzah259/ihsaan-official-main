@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/opportunities-tracker.css" />
   <link rel="stylesheet" href="css/hackathons.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
@@ -68,7 +69,7 @@
           <div class="dropdown-menu" role="menu" aria-label="Programme pages" id="programmesMenu">
             <a role="menuitem" href="#career-conferences" data-route="career-conferences">Career Conferences</a>
             <a role="menuitem" href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
-            <a role="menuitem" href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker</a>
+            <a role="menuitem" href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
             <a role="menuitem" href="#haqqathons" data-route="haqqathons">Hackathons</a>
             <a role="menuitem" href="https://ihsaannetwork.notion.site/careers-essentials" target="_blank" rel="noopener">Career Guides</a>
             <a href="https://mymuslimmentor.com" target="_blank" rel="noopener">My Muslim Mentor</a>
@@ -115,7 +116,7 @@
         <div class="mobile-sub">
           <a href="#career-conferences" data-route="career-conferences">Career Conferences</a>
           <a href="#faithful-talent" data-route="faithful-talent">Faithful Talent</a>
-          <a href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Opportunities Tracker</a>
+          <a href="#opportunities-tracker" data-route="opportunities-tracker">Opportunities Tracker</a>
           <a href="#haqqathons" data-route="haqqathons">Hackathons</a>
           <a href="https://ihsaannetwork.notion.site/careers-essentials" target="_blank" rel="noopener">Career Guides</a>
           <a href="https://mymuslimmentor.com" target="_blank" rel="noopener">My Muslim Mentor</a>
@@ -129,7 +130,7 @@
   <!-- ================= SPA APP ================= -->
   <main class="app" id="app">
 
-    <div data-include="pages/home.html"></div>
+  <div data-include="pages/home.html"></div>
   <div data-include="pages/who-we-are.html"></div>
   <div data-include="pages/get-involved.html"></div>
   <div data-include="pages/career-conferences.html"></div>
@@ -209,7 +210,10 @@
   <script src="scripts/scroll-reveal.js"></script>
   <script src="scripts/ui-effects.js"></script>
   <script src="scripts/routing.js"></script>
-  <script src="js/year.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="scripts/supabase-config.js"></script>
+  <script src="scripts/opportunities-tracker.js"></script>
+  <script src="scripts/year.js"></script>
   <script src="scripts/main.js"></script>
 
 </body>
