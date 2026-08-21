@@ -1,17 +1,21 @@
 <section class="page tracker-page" id="page-opportunities-tracker" data-page="opportunities-tracker">
-  <div class="tracker-hero">
+  <header class="tracker-hero">
     <div class="container tracker-hero-inner">
       <div class="tracker-hero-copy">
         <p class="tracker-eyebrow"><span></span> IHSAAN opportunities tracker</p>
         <h1>Find the next step<br>in your career.</h1>
-        <p>Curated roles, internships, scholarships, and programmes in one clear, searchable place.</p>
+        <p>Curated roles, internships, scholarships, and programmes, all in one place.</p>
+        <div class="tracker-hero-actions">
+          <a class="tracker-browse-cta" href="#opportunities-tracker" data-scroll-target="tracker-board">Browse opportunities <span aria-hidden="true">↓</span></a>
+          <span>Built for IHSAAN students and graduates</span>
+        </div>
       </div>
       <div class="tracker-hero-meta" aria-label="Tracker information">
-        <div><strong>Curated listings</strong><span>Added and kept up to date by IHSAAN</span></div>
-        <div><strong>Built for progression</strong><span>Student and early-career friendly</span></div>
+        <div><strong>Curated listings</strong><span>Selected and maintained by IHSAAN</span></div>
+        <div><strong>Career focused</strong><span>For students and early-career professionals</span></div>
       </div>
     </div>
-  </div>
+  </header>
 
   <section class="tracker-workspace" id="tracker-workspace" aria-label="Contributor workspace" hidden>
     <div class="container">
@@ -81,17 +85,22 @@
   <div class="tracker-shell">
     <div class="container">
       <section class="tracker-intro" aria-label="About the tracker">
-        <div>
+        <div class="tracker-intro-copy">
           <p class="tracker-kicker">Live opportunity board</p>
-          <h2>Explore what’s open now.</h2>
+          <h2>Explore current opportunities.</h2>
           <p>Search roles, internships, scholarships, and programmes selected for the IHSAAN community.</p>
-          <a class="tracker-current-link" href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Browse the previous Notion tracker <span aria-hidden="true">↗</span></a>
+          <a class="tracker-notion-link" href="https://ihsaannetwork.notion.site/opportunities-tracker" target="_blank" rel="noopener">Browse the previous tracker on <strong>Notion</strong> <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="tracker-actions"><p>For IHSAAN team members</p><button class="tracker-account" id="tracker-account-button" type="button">Sign in to manage</button></div>
+        <aside class="tracker-actions" aria-label="Contributor access">
+          <p>For IHSAAN team members</p>
+          <h3>Manage the tracker</h3>
+          <span class="tracker-actions-note">Add new listings, edit details, or manage team access.</span>
+          <button class="tracker-account" id="tracker-account-button" type="button">Team sign in <span aria-hidden="true">→</span></button>
+        </aside>
       </section>
 
-      <section class="tracker-board" aria-label="Opportunity listings">
-        <div class="tracker-board-heading"><div><p class="tracker-kicker">Find your fit</p><h3>Search live opportunities</h3></div><button class="tracker-clear-filters" id="tracker-clear-filters" type="button" hidden>Clear search &amp; filters</button></div>
+      <section class="tracker-board" id="tracker-board" aria-label="Opportunity listings" tabindex="-1">
+        <div class="tracker-board-heading"><div><p class="tracker-kicker">Find your fit</p><h3>Browse opportunities</h3></div><button class="tracker-clear-filters" id="tracker-clear-filters" type="button" hidden>Clear search &amp; filters</button></div>
         <div class="tracker-controls">
           <label class="tracker-search">
             <span class="sr-only">Search opportunities</span>
