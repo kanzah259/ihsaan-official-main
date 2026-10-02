@@ -1,5 +1,10 @@
 /* inner pages, footer, responsive */
 
+/* Career Guides shares the Opportunities Tracker hero layout. */
+#page-career-guides .tracker-hero-copy > .career-guides-description {
+  color: #fff;
+}
+
 /* ---------- MEET THE TEAM ---------- */
 .team-grid{
   display: grid;
