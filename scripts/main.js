@@ -8,6 +8,7 @@ window.addEventListener("load", async () => {
   bindRouteLinks();
 
   initOpportunitiesTracker();
+  initCareerGuidesSearch();
 
   handleRoute();
 

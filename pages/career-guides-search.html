@@ -1,2 +1,27 @@
 <section class="page" id="page-career-guides-search" data-page="career-guides-search" aria-label="Career Guides search">
+  <div class="container guide-library">
+    <nav class="guide-breadcrumb" aria-label="Breadcrumb">
+      <a href="#career-guides" data-route="career-guides">Career Guides</a>
+      <span aria-hidden="true">/</span><span aria-current="page">All guides</span>
+    </nav>
+    <header class="guide-library-heading">
+      <p class="tracker-kicker">IHSAAN career guides</p>
+      <h1>Browse all guides</h1>
+      <p>Find practical guidance for your next step, from choosing a career to preparing applications.</p>
+    </header>
+    <form class="guide-search-form" id="guide-search-form" role="search" aria-label="Search career guides">
+      <label for="guide-search">Search guides</label>
+      <div class="guide-search-controls">
+        <div class="guide-search-input">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="guide-search" type="search" placeholder="Search career choices, CVs, or interviews" autocomplete="off" disabled>
+          <button type="submit" id="guide-search-submit" disabled>Search <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </form>
+    <p class="guide-results-status" id="guide-results-status" role="status" aria-live="polite" aria-atomic="true">Loading guides…</p>
+    <button class="guide-retry" id="guide-search-retry" type="button" hidden>Retry</button>
+    <div class="guide-results-grid" id="guide-results" aria-label="Matching guides"></div>
+    <noscript><p class="guide-empty">Enable JavaScript to search this preview catalogue.</p></noscript>
+  </div>
 </section>
