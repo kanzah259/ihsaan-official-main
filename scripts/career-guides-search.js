@@ -5,7 +5,8 @@ function initCareerGuidesSearch() {
   const results = document.getElementById("guide-results");
   const status = document.getElementById("guide-results-status");
   const retry = document.getElementById("guide-search-retry");
-  if (!form || !input || !submit || !results || !status || !retry) return;
+  const categoryFilter = document.getElementById("guide-category");
+  if (!form || !input || !submit || !results || !status || !retry || !categoryFilter) return;
 
   let guides = [];
   let loaded = false;
@@ -21,11 +22,12 @@ function initCareerGuidesSearch() {
     }
 
     const matches = guides.filter((guide) =>
-      !query || `${guide.title} ${guide.description}`.toLocaleLowerCase("en-GB").includes(query)
+      (!categoryFilter.value || guide.category === categoryFilter.value)
+      && (!query || `${guide.title} ${guide.description}`.toLocaleLowerCase("en-GB").includes(query))
     );
     status.textContent = matches.length
       ? `${matches.length} ${matches.length === 1 ? "result" : "results"}`
-      : "No guides found. Try another search.";
+      : "No guides found. Try another search or category.";
 
     const cards = matches.map((guide) => {
       const card = document.createElement("article");
@@ -53,6 +55,7 @@ function initCareerGuidesSearch() {
     loaded = false;
     input.disabled = true;
     submit.disabled = true;
+    categoryFilter.disabled = true;
     retry.hidden = true;
     results.setAttribute("aria-busy", "true");
     status.textContent = "Loading guides…";
@@ -69,6 +72,7 @@ function initCareerGuidesSearch() {
       loaded = true;
       input.disabled = false;
       submit.disabled = false;
+      categoryFilter.disabled = false;
       render();
     } catch {
       results.replaceChildren();
@@ -81,6 +85,7 @@ function initCareerGuidesSearch() {
   };
 
   input.addEventListener("input", render);
+  categoryFilter.addEventListener("change", render);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     render();

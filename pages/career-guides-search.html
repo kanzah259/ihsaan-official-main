@@ -2,7 +2,7 @@
   <div class="container guide-library">
     <nav class="guide-breadcrumb" aria-label="Breadcrumb">
       <a href="#career-guides" data-route="career-guides">Career Guides</a>
-      <span aria-hidden="true">/</span><span aria-current="page">All guides</span>
+      <span aria-hidden="true">/</span><span aria-current="page">All Guides</span>
     </nav>
     <header class="guide-library-heading">
       <p class="tracker-kicker">IHSAAN career guides</p>
@@ -17,6 +17,15 @@
           <input id="guide-search" type="search" placeholder="Search career choices, CVs, or interviews" autocomplete="off" disabled>
           <button type="submit" id="guide-search-submit" disabled>Search <span aria-hidden="true">→</span></button>
         </div>
+        <select class="guide-category-filter" id="guide-category" aria-label="Filter by category" disabled>
+          <option value="">All categories</option>
+          <option>Purpose &amp; Career Choices</option>
+          <option>Career Foundations</option>
+          <option>Applications &amp; Assessments</option>
+          <option>Faith &amp; Workplace Life</option>
+          <option>Career Stories</option>
+          <option>Networks &amp; Resources</option>
+        </select>
       </div>
     </form>
     <p class="guide-results-status" id="guide-results-status" role="status" aria-live="polite" aria-atomic="true">Loading guides…</p>
