@@ -5,6 +5,11 @@
   color: #fff;
 }
 
+/* Empty search-page shell for the next implementation step. */
+#page-career-guides-search {
+  min-height: 60vh;
+}
+
 /* ---------- MEET THE TEAM ---------- */
 .team-grid{
   display: grid;
