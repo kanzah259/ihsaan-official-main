@@ -332,6 +332,21 @@
   left: 118%;
   opacity: 1;
 }
+.membership-cta,
+.membership-cta:hover {
+  margin-bottom: 18px;
+  color: #fff;
+  border-color: #a87920;
+  background: linear-gradient(115deg, #926114, #b38329, #96701e, #b38329, #926114);
+  background-size: 300% 300%;
+}
+.membership-cta::before {
+  background: linear-gradient(120deg, #926114, #b38329, #96701e);
+}
+.membership-cta:focus-visible {
+  outline: 3px solid #926114;
+  outline-offset: 4px;
+}
 .hero-secondary{
   display: inline-flex;
   align-items: center;

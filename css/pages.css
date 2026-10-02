@@ -1448,7 +1448,7 @@
 
 #page-who-we-are .who-values-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -1537,6 +1537,9 @@
   place-items: center;
   width: clamp(86px, 8vw, 116px);
   aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
   margin-bottom: 38px;
   border: 1px solid rgba(255,255,255,.34);
   background:
