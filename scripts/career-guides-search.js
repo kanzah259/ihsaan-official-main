@@ -98,13 +98,11 @@ function initCareerGuidesSearch() {
     heroForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const query = heroInput.value.trim();
-      if (query.length < 2) {
-        heroStatus.textContent = "Type at least 2 characters to search.";
-        heroInput.focus();
-        return;
-      }
+      heroStatus.textContent = "";
       closeSuggestions();
-      window.location.hash = `career-guides-search?${new URLSearchParams({ q: query })}`;
+      window.location.hash = query
+        ? `career-guides-search?${new URLSearchParams({ q: query })}`
+        : "career-guides-search";
     });
   }
 
@@ -129,11 +127,6 @@ function initCareerGuidesSearch() {
     if (!loaded) return;
     const query = input.value.trim().toLocaleLowerCase("en-GB");
     results.replaceChildren();
-    if (query.length === 1) {
-      status.textContent = "Type at least 2 characters to search.";
-      return;
-    }
-
     const matches = getMatches(query, categoryFilter.value);
     status.textContent = matches.length
       ? `${matches.length} ${matches.length === 1 ? "result" : "results"}`
