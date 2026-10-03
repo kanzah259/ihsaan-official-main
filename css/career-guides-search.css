@@ -16,7 +16,17 @@ body:has(#page-career-guides-search.is-active) .topbar { background: #06152f !im
 .guide-search-input:focus-within { border-color: #5b9be3; box-shadow: 0 0 0 3px rgba(74,158,255,.14); }
 .guide-search-input svg { position: absolute; top: 50%; left: 17px; width: 22px; height: 22px; transform: translateY(-50%); color: #58708e; pointer-events: none; }
 .guide-search-input input { flex: 1; min-width: 0; width: 100%; min-height: 54px; border: 0; border-radius: 9px; padding: 14px 12px 14px 50px; background: transparent; color: #102a55; font: inherit; font-size: 16px; }
-.guide-library .guide-search-input input:focus-visible { outline: none; }
+.guide-library .guide-search-input input:focus-visible, .guide-hero-search .guide-search-input input:focus-visible { outline: none; }
+.guide-hero-search > label { color: #fff; }
+#page-career-guides .tracker-hero { overflow: visible; z-index: 1; }
+.guide-hero-search-status { margin-top: 10px; color: #fff; font-size: 14px; }
+.guide-hero-search-status:empty { display: none; }
+.guide-hero-search button:focus-visible { outline: 3px solid #377bc5; outline-offset: 2px; }
+.guide-suggestions { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 20; padding: 6px; border: 1px solid #d7e0eb; border-radius: 9px; background: #fff; box-shadow: 0 12px 30px rgba(6,21,47,.18); }
+.guide-suggestions[hidden] { display: none; }
+.guide-suggestion { display: block; padding: 12px 14px; border-radius: 6px; color: #102a55; font-size: 14px; line-height: 1.4; }
+.guide-suggestion:hover, .guide-suggestion[aria-selected="true"], .guide-suggestion:focus-visible { background: #edf3fb; outline: none; }
+.guide-suggestions-empty { padding: 12px 14px; color: #536781; font-size: 14px; }
 .guide-search-input input::placeholder { color: #8392a6; }
 .guide-search-input button { display: inline-flex; align-items: center; gap: 8px; flex: none; min-height: 44px; margin: 5px 6px; border: 0; border-radius: 6px; padding: 10px 14px; background: transparent; color: #0b3778; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
 .guide-search-input button:hover { background: #edf3fb; }

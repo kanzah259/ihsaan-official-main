@@ -45,7 +45,7 @@ function showPage(route) {
 }
 
 function handleRoute() {
-  const route = window.location.hash.replace("#", "") || "home";
+  const route = window.location.hash.slice(1).split("?")[0] || "home";
   showPage(route);
 }
 

@@ -12,6 +12,93 @@ function initCareerGuidesSearch() {
   let loaded = false;
   let loading = false;
 
+  const heroForm = document.getElementById("guide-hero-search-form");
+  const heroInput = document.getElementById("guide-hero-search");
+  const heroStatus = document.getElementById("guide-hero-search-status");
+  const suggestions = document.getElementById("guide-hero-suggestions");
+  let activeSuggestion = -1;
+  const closeSuggestions = () => {
+    if (!suggestions || !heroInput) return;
+    suggestions.hidden = true;
+    heroInput.setAttribute("aria-expanded", "false");
+    heroInput.removeAttribute("aria-activedescendant");
+    activeSuggestion = -1;
+  };
+  const renderSuggestions = () => {
+    if (!suggestions || !heroInput || !heroStatus) return;
+    closeSuggestions();
+    const query = heroInput.value.trim().toLocaleLowerCase("en-GB");
+    if (query.length < 2 || document.activeElement !== heroInput) return;
+    suggestions.replaceChildren();
+    const matches = loaded ? getMatches(query).slice(0, 5) : [];
+    matches.forEach((guide, index) => {
+      const option = document.createElement("a");
+      option.id = `guide-suggestion-${index}`;
+      option.className = "guide-suggestion";
+      option.setAttribute("role", "option");
+      option.setAttribute("aria-selected", "false");
+      option.tabIndex = -1;
+      option.href = `#career-guides-search?${new URLSearchParams({ q: guide.title })}`;
+      option.textContent = guide.title;
+      option.addEventListener("click", closeSuggestions);
+      suggestions.append(option);
+    });
+    if (!matches.length) {
+      const message = document.createElement("p");
+      message.className = "guide-suggestions-empty";
+      message.textContent = loaded ? "No guides found." : loading ? "Loading guides…" : "Suggestions unavailable. You can still search.";
+      suggestions.append(message);
+    }
+    suggestions.hidden = false;
+    heroInput.setAttribute("aria-expanded", "true");
+  };
+  if (heroForm && heroInput && heroStatus) {
+    heroInput.addEventListener("input", () => {
+      heroStatus.textContent = "";
+      renderSuggestions();
+    });
+    heroInput.addEventListener("focus", renderSuggestions);
+    heroInput.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSuggestions();
+        heroStatus.textContent = "";
+        return;
+      }
+      if (!suggestions || suggestions.hidden) return;
+      const options = [...suggestions.querySelectorAll('[role="option"]')];
+      if ((event.key === "ArrowDown" || event.key === "ArrowUp") && options.length) {
+        event.preventDefault();
+        activeSuggestion = event.key === "ArrowDown"
+          ? (activeSuggestion + 1) % options.length
+          : (activeSuggestion <= 0 ? options.length : activeSuggestion) - 1;
+        options.forEach((option, index) => option.setAttribute("aria-selected", String(index === activeSuggestion)));
+        heroInput.setAttribute("aria-activedescendant", options[activeSuggestion].id);
+      } else if (event.key === "Enter" && activeSuggestion >= 0) {
+        event.preventDefault();
+        options[activeSuggestion].click();
+      }
+    });
+    heroForm.addEventListener("focusout", (event) => {
+      if (!heroForm.contains(event.relatedTarget)) closeSuggestions();
+    });
+    document.addEventListener("pointerdown", (event) => {
+      if (!heroForm.contains(event.target)) closeSuggestions();
+    });
+    window.addEventListener("hashchange", closeSuggestions);
+    heroForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const query = heroInput.value.trim();
+      if (query.length < 2) {
+        heroStatus.textContent = "Type at least 2 characters to search.";
+        heroInput.focus();
+        return;
+      }
+      closeSuggestions();
+      window.location.hash = `career-guides-search?${new URLSearchParams({ q: query })}`;
+    });
+  }
+
   const matchRank = (guide, query) => {
     if (!query) return 0;
     const title = guide.title.toLocaleLowerCase("en-GB");
@@ -22,6 +109,12 @@ function initCareerGuidesSearch() {
     return Infinity;
   };
 
+  const getMatches = (query, category = "") => guides
+    .filter((guide) => (!category || guide.category === category)
+      && Number.isFinite(matchRank(guide, query)))
+    .sort((a, b) => matchRank(a, query) - matchRank(b, query)
+      || a.title.localeCompare(b.title, "en-GB"));
+
   const render = () => {
     if (!loaded) return;
     const query = input.value.trim().toLocaleLowerCase("en-GB");
@@ -31,11 +124,7 @@ function initCareerGuidesSearch() {
       return;
     }
 
-    const matches = guides
-      .filter((guide) => (!categoryFilter.value || guide.category === categoryFilter.value)
-        && Number.isFinite(matchRank(guide, query)))
-      .sort((a, b) => matchRank(a, query) - matchRank(b, query)
-        || a.title.localeCompare(b.title, "en-GB"));
+    const matches = getMatches(query, categoryFilter.value);
     status.textContent = matches.length
       ? `${matches.length} ${matches.length === 1 ? "result" : "results"}`
       : "No guides found. Try another search or category.";
@@ -92,10 +181,20 @@ function initCareerGuidesSearch() {
     } finally {
       loading = false;
       results.removeAttribute("aria-busy");
+      renderSuggestions();
     }
   };
 
   input.addEventListener("input", render);
+  const readRouteQuery = () => {
+    const [route, query = ""] = window.location.hash.slice(1).split("?");
+    if (route !== "career-guides-search") return;
+    input.value = new URLSearchParams(query).get("q") || "";
+    categoryFilter.value = "";
+    render();
+  };
+  window.addEventListener("hashchange", readRouteQuery);
+  readRouteQuery();
   categoryFilter.addEventListener("change", render);
   form.addEventListener("submit", (event) => {
     event.preventDefault();

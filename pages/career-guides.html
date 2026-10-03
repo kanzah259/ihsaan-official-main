@@ -5,9 +5,16 @@
         <p class="tracker-eyebrow"><span aria-hidden="true"></span> IHSAAN career guides</p>
         <h1>Build your career<br>with purpose.</h1>
         <p class="career-guides-description">Free, practical guidance for Muslim students navigating career choices, applications, and faith at work.</p>
-        <div class="tracker-hero-actions">
-          <a class="tracker-browse-cta" href="#career-guides-search" data-route="career-guides-search">Browse all guides <span aria-hidden="true">→</span></a>
-        </div>
+        <form class="guide-search-form guide-hero-search" id="guide-hero-search-form" role="search" aria-label="Search career guides">
+          <label for="guide-hero-search">Search guides</label>
+          <div class="guide-search-input">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="guide-hero-search" type="search" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="guide-hero-suggestions" aria-expanded="false" placeholder="Search career choices, CVs, or interviews" autocomplete="off" aria-describedby="guide-hero-search-status">
+            <button type="submit">Search <span aria-hidden="true">→</span></button>
+            <div id="guide-hero-suggestions" class="guide-suggestions" role="listbox" aria-label="Suggested guides" hidden></div>
+          </div>
+          <p id="guide-hero-search-status" class="guide-hero-search-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
       <div class="tracker-hero-meta" aria-label="About our career guides">
         <div><strong>Practical guidance</strong><span>From choosing a career to preparing applications</span></div>
