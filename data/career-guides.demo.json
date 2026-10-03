@@ -16,5 +16,11 @@
     "description": "Learn how to present your experience and skills in clear, tailored job applications.",
     "category": "Applications & Assessments",
     "startHere": false
+  },
+  {
+    "title": "Starting Early",
+    "description": "Build useful habits, explore opportunities, and gain experience early in your university journey.",
+    "category": "Career Foundations",
+    "startHere": true
   }
 ]

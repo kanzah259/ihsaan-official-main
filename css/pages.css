@@ -5,6 +5,19 @@
   color: #fff;
 }
 
+.guide-start-section { padding: 60px 0 80px; background: #f7f9fc; }
+.guide-start-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.guide-start-heading .tracker-kicker { color: #2867ae; }
+.guide-start-heading h2 { color: #0a2858; font-size: clamp(30px, 3.5vw, 44px); line-height: 1.15; letter-spacing: -.04em; }
+.guide-start-description { max-width: 650px; margin-top: 14px; color: #52647c; font-size: 16px; line-height: 1.65; }
+.guide-start-browse { display: inline-flex; align-items: center; gap: 9px; padding: 8px 0; color: #17529b; font-size: 14px; font-weight: 700; }
+.guide-start-browse:hover { text-decoration: underline; }
+.guide-start-browse:focus-visible { outline: 3px solid #377bc5; outline-offset: 4px; }
+@media (max-width: 640px) {
+  .guide-start-section { padding: 40px 0 50px; }
+  .guide-start-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+}
+
 /* ---------- MEET THE TEAM ---------- */
 .team-grid{
   display: grid;
