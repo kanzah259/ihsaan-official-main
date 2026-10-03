@@ -14,7 +14,10 @@ function showPage(route) {
   const currentPage = document.querySelector(".page.is-active");
   const nextPage = Array.from(pages).find(p => p.dataset.page === finalRoute);
 
-  if (currentPage === nextPage) return;
+  if (currentPage === nextPage) {
+    scrollCareerGuideSection();
+    return;
+  }
 
   if (currentPage) {
     currentPage.style.opacity = "0";
@@ -37,7 +40,7 @@ function showPage(route) {
       burger.setAttribute("aria-expanded", "false");
     }
     if (burger) burger.setAttribute("aria-expanded", "false");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (!scrollCareerGuideSection()) window.scrollTo({ top: 0, behavior: "smooth" });
 
     initRevealSystem();
     initCounterObserver();

@@ -1,3 +1,18 @@
+// Called by the router only after the requested article is visible.
+function scrollCareerGuideSection() {
+  const [route, query = ''] = window.location.hash.slice(1).split('?');
+  const id = new URLSearchParams(query).get('section');
+  if (!id) return false;
+  const page = [...document.querySelectorAll('.guide-article-page.is-active')]
+    .find(element => element.dataset.page === route);
+  const target = page && [...page.querySelectorAll('.guide-article-content [id]')]
+    .find(element => element.id === id);
+  if (!target) return false;
+  target.focus({ preventScroll: true });
+  target.scrollIntoView({ behavior: 'instant', block: 'start' });
+  return true;
+}
+
 function initCareerGuideArticles() {
   document.querySelectorAll('.guide-article-page').forEach(page => {
     const article = page.querySelector('.guide-article-content');
@@ -96,7 +111,10 @@ function initCareerGuideArticles() {
         if (heading.tagName === 'H3') link.classList.add('guide-toc-subsection');
         link.href = `#${page.dataset.page}?${new URLSearchParams({ section: section.id })}`;
         link.addEventListener('click', event => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           event.preventDefault();
+          // Replace this page's URL, without creating section-by-section Back entries.
+          window.history.replaceState(window.history.state, '', link.href);
           const disclosure = link.closest('details');
           if (disclosure) disclosure.open = false;
           section.focus({ preventScroll: true });
