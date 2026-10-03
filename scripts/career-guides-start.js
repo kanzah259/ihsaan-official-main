@@ -10,6 +10,7 @@ async function initCareerGuidesStartHere() {
       && ["title", "description", "category"].every((key) =>
         typeof guide[key] === "string" && guide[key].trim()
       )
+      && (guide.url === undefined || (typeof guide.url === "string" && /^#career-guide-[a-z0-9-]+$/.test(guide.url)))
     )) throw new Error("Invalid catalogue");
 
     const cards = guides.filter((guide) => guide.startHere).map((guide, index) => {
@@ -25,9 +26,10 @@ async function initCareerGuidesStartHere() {
       const description = document.createElement("p");
       description.className = "guide-result-description";
       description.textContent = guide.description;
-      const availability = document.createElement("span");
-      availability.className = "guide-result-demo";
-      availability.textContent = "Demo guide · Article not available";
+      const availability = document.createElement(guide.url ? "a" : "span");
+      availability.className = guide.url ? "guide-article-back" : "guide-result-demo";
+      availability.textContent = guide.url ? "Read guide →" : "Demo guide · Article not available";
+      if (guide.url) availability.href = guide.url;
       card.append(category, title, description, availability);
       return card;
     });

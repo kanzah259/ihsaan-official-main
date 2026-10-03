@@ -47,7 +47,7 @@ function initCareerGuidesSearch() {
       option.setAttribute("role", "option");
       option.setAttribute("aria-selected", "false");
       option.tabIndex = -1;
-      option.href = `#career-guides-search?${new URLSearchParams({ q: guide.title })}`;
+      option.href = guide.url || `#career-guides-search?${new URLSearchParams({ q: guide.title })}`;
       option.textContent = guide.title;
       option.addEventListener("click", closeSuggestions);
       suggestions.append(option);
@@ -150,9 +150,10 @@ function initCareerGuidesSearch() {
       const description = document.createElement("p");
       description.className = "guide-result-description";
       description.textContent = guide.description;
-      const availability = document.createElement("span");
-      availability.className = "guide-result-demo";
-      availability.textContent = "Demo guide · Article not available";
+      const availability = document.createElement(guide.url ? "a" : "span");
+      availability.className = guide.url ? "guide-article-back" : "guide-result-demo";
+      availability.textContent = guide.url ? "Read guide →" : "Demo guide · Article not available";
+      if (guide.url) availability.href = guide.url;
       card.append(category, title, description, availability);
       return card;
     });
@@ -178,6 +179,7 @@ function initCareerGuidesSearch() {
         guide && ["title", "description", "category"].every((key) =>
           typeof guide[key] === "string" && guide[key].trim()
         ) && typeof guide.startHere === "boolean"
+        && (guide.url === undefined || (typeof guide.url === "string" && /^#career-guide-[a-z0-9-]+$/.test(guide.url)))
       )) throw new Error("Invalid catalogue");
       guides = catalogue.sort((a, b) => a.title.localeCompare(b.title, "en-GB"));
       loaded = true;
