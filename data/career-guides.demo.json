@@ -5,23 +5,5 @@
     "description": "Reflect on your intentions and connect your career ambitions with faith, service, and purpose.",
     "category": "Purpose & Career Choices",
     "startHere": true
-  },
-  {
-    "title": "Choosing a Career Path",
-    "description": "Explore your interests, strengths, and values to choose a career direction that suits you.",
-    "category": "Purpose & Career Choices",
-    "startHere": true
-  },
-  {
-    "title": "CV & Cover Letter Building",
-    "description": "Learn how to present your experience and skills in clear, tailored job applications.",
-    "category": "Applications & Assessments",
-    "startHere": false
-  },
-  {
-    "title": "Starting Early",
-    "description": "Build useful habits, explore opportunities, and gain experience early in your university journey.",
-    "category": "Career Foundations",
-    "startHere": true
   }
 ]
