@@ -12,6 +12,16 @@ function initCareerGuidesSearch() {
   let loaded = false;
   let loading = false;
 
+  const matchRank = (guide, query) => {
+    if (!query) return 0;
+    const title = guide.title.toLocaleLowerCase("en-GB");
+    if (title === query) return 0;
+    if (title.startsWith(query)) return 1;
+    if (title.includes(query)) return 2;
+    if (guide.description.toLocaleLowerCase("en-GB").includes(query)) return 3;
+    return Infinity;
+  };
+
   const render = () => {
     if (!loaded) return;
     const query = input.value.trim().toLocaleLowerCase("en-GB");
@@ -21,10 +31,11 @@ function initCareerGuidesSearch() {
       return;
     }
 
-    const matches = guides.filter((guide) =>
-      (!categoryFilter.value || guide.category === categoryFilter.value)
-      && (!query || `${guide.title} ${guide.description}`.toLocaleLowerCase("en-GB").includes(query))
-    );
+    const matches = guides
+      .filter((guide) => (!categoryFilter.value || guide.category === categoryFilter.value)
+        && Number.isFinite(matchRank(guide, query)))
+      .sort((a, b) => matchRank(a, query) - matchRank(b, query)
+        || a.title.localeCompare(b.title, "en-GB"));
     status.textContent = matches.length
       ? `${matches.length} ${matches.length === 1 ? "result" : "results"}`
       : "No guides found. Try another search or category.";
