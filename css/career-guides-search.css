@@ -10,6 +10,11 @@ body:has(#page-career-guides-search.is-active) .topbar { background: #06152f !im
 .guide-search-form { margin-top: 32px; }
 .guide-search-form > label { display: block; margin-bottom: 9px; color: #17335f; font-size: 14px; font-weight: 700; }
 .guide-search-controls { display: flex; align-items: center; gap: 12px; }
+.guide-filter-controls { display: flex; align-items: center; gap: 10px; flex: none; }
+.guide-clear-filter { display: none; border: 0; padding: 10px 0; background: transparent; color: #17529b; font: inherit; font-size: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; min-height: 44px; }
+.guide-clear-filter:disabled { color: #64748b; opacity: 1; cursor: default; }
+.guide-clear-filter:not(:disabled):hover { text-decoration: underline; }
+.guide-clear-filter span { font-size: 18px; vertical-align: middle; }
 .guide-category-filter { appearance: none; flex: none; width: 205px; max-width: 100%; min-height: 44px; border: 1px solid #113c7d; border-radius: 8px; padding: 10px 36px 10px 12px; color: #fff; background-color: #113c7d; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
 .guide-category-filter option { color: #17335f; background: #fff; }
 .guide-search-input { position: relative; display: flex; align-items: center; flex: 1; min-width: 0; border: 1px solid #d7e0eb; border-radius: 9px; background: #f8fbfe; }
@@ -45,3 +50,8 @@ body:has(#page-career-guides-search.is-active) .topbar { background: #06152f !im
 .guide-empty { color: #536781; line-height: 1.7; }
 @media (max-width: 960px) { .guide-library { padding-top: 112px; } .guide-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .guide-library { padding-top: 102px; padding-bottom: 50px; } .guide-breadcrumb { margin-bottom: 24px; } .guide-search-controls { align-items: stretch; flex-direction: column; } .guide-category-filter { align-self: flex-start; } .guide-results-grid { grid-template-columns: 1fr; } .guide-result-card { padding: 22px; } }
+@media (max-width: 640px) {
+  .guide-filter-controls { justify-content: space-between; }
+  .guide-filter-controls .guide-category-filter { flex-shrink: 1; min-width: 0; }
+  .guide-clear-filter { display: inline-block; flex: 1; text-align: center; }
+}

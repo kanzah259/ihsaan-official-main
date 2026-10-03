@@ -12,9 +12,11 @@ async function initCareerGuidesStartHere() {
       )
     )) throw new Error("Invalid catalogue");
 
-    const cards = guides.filter((guide) => guide.startHere).map((guide) => {
+    const cards = guides.filter((guide) => guide.startHere).map((guide, index) => {
       const card = document.createElement("article");
       card.className = "guide-result-card";
+      card.dataset.reveal = "fade-up";
+      card.dataset.revealDelay = String(index * 80);
       const category = document.createElement("p");
       category.className = "guide-result-category";
       category.textContent = guide.category;
@@ -30,6 +32,7 @@ async function initCareerGuidesStartHere() {
       return card;
     });
     grid.replaceChildren(...cards);
+    initRevealSystem();
   } catch {
     // Preserve the HTML fallback if the catalogue cannot be fetched or parsed.
   }

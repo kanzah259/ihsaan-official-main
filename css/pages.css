@@ -13,6 +13,12 @@
 .guide-start-browse { display: inline-flex; align-items: center; gap: 9px; padding: 8px 0; color: #17529b; font-size: 14px; font-weight: 700; }
 .guide-start-browse:hover { text-decoration: underline; }
 .guide-start-browse:focus-visible { outline: 3px solid #377bc5; outline-offset: 4px; }
+.guide-start-section .guide-result-card { box-shadow: 0 24px 62px rgba(16,43,104,.08); transition: opacity var(--transition-slow), transform .24s var(--ease-out-expo), box-shadow .24s ease, border-color .24s ease; }
+.guide-start-section .guide-result-card.is-visible:hover { transform: translateY(-4px); border-color: rgba(16,43,104,.20); box-shadow: 0 30px 72px rgba(16,43,104,.12); }
+@media (prefers-reduced-motion: reduce) {
+  .guide-start-section .guide-result-card { transition: none; }
+  .guide-start-section .guide-result-card.is-visible:hover { transform: none; }
+}
 @media (max-width: 640px) {
   .guide-start-section { padding: 40px 0 50px; }
   .guide-start-heading { align-items: flex-start; flex-direction: column; gap: 12px; }

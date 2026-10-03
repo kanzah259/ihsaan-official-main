@@ -6,6 +6,7 @@ function initCareerGuidesSearch() {
   const status = document.getElementById("guide-results-status");
   const retry = document.getElementById("guide-search-retry");
   const categoryFilter = document.getElementById("guide-category");
+  const clearFilter = document.getElementById("guide-clear-filter");
   if (!form || !input || !submit || !results || !status || !retry || !categoryFilter) return;
 
   let guides = [];
@@ -15,6 +16,14 @@ function initCareerGuidesSearch() {
   const heroForm = document.getElementById("guide-hero-search-form");
   const heroInput = document.getElementById("guide-hero-search");
   const heroStatus = document.getElementById("guide-hero-search-status");
+  const mobileQuery = window.matchMedia("(max-width: 640px)");
+  const updatePlaceholders = () => {
+    [input, heroInput].filter(Boolean).forEach((field) => {
+      field.placeholder = mobileQuery.matches ? "Search guides" : "Search career choices, CVs, or interviews";
+    });
+  };
+  mobileQuery.addEventListener("change", updatePlaceholders);
+  updatePlaceholders();
   const suggestions = document.getElementById("guide-hero-suggestions");
   let activeSuggestion = -1;
   const closeSuggestions = () => {
@@ -116,6 +125,7 @@ function initCareerGuidesSearch() {
       || a.title.localeCompare(b.title, "en-GB"));
 
   const render = () => {
+    if (clearFilter) clearFilter.disabled = !loaded || !categoryFilter.value;
     if (!loaded) return;
     const query = input.value.trim().toLocaleLowerCase("en-GB");
     results.replaceChildren();
@@ -156,6 +166,7 @@ function initCareerGuidesSearch() {
     input.disabled = true;
     submit.disabled = true;
     categoryFilter.disabled = true;
+    if (clearFilter) clearFilter.disabled = true;
     retry.hidden = true;
     results.setAttribute("aria-busy", "true");
     status.textContent = "Loading guides…";
@@ -196,6 +207,10 @@ function initCareerGuidesSearch() {
   window.addEventListener("hashchange", readRouteQuery);
   readRouteQuery();
   categoryFilter.addEventListener("change", render);
+  if (clearFilter) clearFilter.addEventListener("click", () => {
+    categoryFilter.value = "";
+    render();
+  });
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     render();

@@ -17,6 +17,7 @@
           <input id="guide-search" type="search" placeholder="Search career choices, CVs, or interviews" autocomplete="off" disabled>
           <button type="submit" id="guide-search-submit" disabled>Search <span aria-hidden="true">→</span></button>
         </div>
+        <div class="guide-filter-controls">
         <select class="guide-category-filter" id="guide-category" aria-label="Filter by category" disabled>
           <option value="">All categories</option>
           <option>Purpose &amp; Career Choices</option>
@@ -26,6 +27,8 @@
           <option>Career Stories</option>
           <option>Networks &amp; Resources</option>
         </select>
+        <button class="guide-clear-filter" id="guide-clear-filter" type="button" disabled><span aria-hidden="true">×</span> Clear filters</button>
+        </div>
       </div>
     </form>
     <p class="guide-results-status" id="guide-results-status" role="status" aria-live="polite" aria-atomic="true">Loading guides…</p>
