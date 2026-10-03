@@ -200,8 +200,10 @@ function initCareerGuidesSearch() {
   const readRouteQuery = () => {
     const [route, query = ""] = window.location.hash.slice(1).split("?");
     if (route !== "career-guides-search") return;
-    input.value = new URLSearchParams(query).get("q") || "";
-    categoryFilter.value = "";
+    const params = new URLSearchParams(query);
+    input.value = params.get("q") || "";
+    const category = params.get("category") || "";
+    categoryFilter.value = [...categoryFilter.options].some(option => option.value === category) ? category : "";
     render();
   };
   window.addEventListener("hashchange", readRouteQuery);

@@ -10,6 +10,7 @@ window.addEventListener("load", async () => {
   initOpportunitiesTracker();
   initCareerGuidesSearch();
   initCareerGuidesStartHere();
+  initCareerGuideArticles();
 
   handleRoute();
 
