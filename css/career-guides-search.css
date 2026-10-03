@@ -55,6 +55,7 @@ body:has(#page-career-guides-search.is-active) .topbar { background: #06152f !im
 .guide-result-card h2, .guide-result-card h3 { color: #0a2858; font-size: 22px; line-height: 1.3; letter-spacing: -.025em; }
 .guide-result-description { margin: 13px 0 24px; color: #536781; font-size: 14px; line-height: 1.75; }
 .guide-result-demo { margin-top: auto; padding-top: 17px; border-top: 1px solid #e6edf5; color: #64748b; font-size: 12px; }
+.guide-result-card .guide-article-back { margin-top: auto; padding-top: 17px; border-top: 1px solid #e6edf5; }
 .guide-empty { color: #536781; line-height: 1.7; }
 @media (max-width: 960px) { .guide-library { padding-top: 112px; } .guide-results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .guide-library { padding-top: 102px; padding-bottom: 50px; } .guide-breadcrumb { margin-bottom: 24px; } .guide-search-controls { align-items: stretch; flex-direction: column; } .guide-category-filter { align-self: flex-start; } .guide-results-grid { grid-template-columns: 1fr; } .guide-result-card { padding: 22px; } }
