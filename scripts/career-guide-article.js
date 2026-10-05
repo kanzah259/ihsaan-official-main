@@ -8,6 +8,9 @@ function scrollCareerGuideSection() {
   const target = page && [...page.querySelectorAll('.guide-article-content [id]')]
     .find(element => element.id === id);
   if (!target) return false;
+  for (let ancestor = target.parentElement; ancestor && ancestor !== page; ancestor = ancestor.parentElement) {
+    if (ancestor.tagName === 'DETAILS') ancestor.open = true;
+  }
   target.focus({ preventScroll: true });
   target.scrollIntoView({ behavior: 'instant', block: 'start' });
   return true;
@@ -16,6 +19,16 @@ function scrollCareerGuideSection() {
 function initCareerGuideArticles() {
   document.querySelectorAll('.guide-article-page').forEach(page => {
     const article = page.querySelector('.guide-article-content');
+    // External guide resources and credits open separately from the reading view.
+    page.querySelectorAll('a[href]').forEach(link => {
+      try {
+        const url = new URL(link.getAttribute('href'), window.location.href);
+        if (['http:', 'https:'].includes(url.protocol) && url.origin !== window.location.origin) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      } catch { /* Invalid links are not treated as external resources. */ }
+    });
     const header = page.querySelector('.guide-article-header');
     let metadata = header?.querySelector('.guide-article-metadata');
     if (header && !metadata) {
@@ -118,6 +131,9 @@ function initCareerGuideArticles() {
           window.history.replaceState(window.history.state, '', link.href);
           const disclosure = link.closest('details');
           if (disclosure) disclosure.open = false;
+          for (let ancestor = section.parentElement; ancestor && ancestor !== page; ancestor = ancestor.parentElement) {
+            if (ancestor.tagName === 'DETAILS') ancestor.open = true;
+          }
           section.focus({ preventScroll: true });
           section.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
         });

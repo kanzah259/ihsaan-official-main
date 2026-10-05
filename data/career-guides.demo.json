@@ -12,5 +12,33 @@
     "description": "Explore your interests, strengths, and values to choose a career direction that suits you.",
     "category": "Purpose & Career Choices",
     "startHere": true
+  },
+  {
+    "title": "Starting Early",
+    "url": "#career-guide-starting-early",
+    "description": "Start preparing for your career early with practical steps for each year of university.",
+    "category": "Career Foundations",
+    "startHere": false
+  },
+  {
+    "title": "Building a Personal Brand",
+    "url": "#career-guide-building-a-personal-brand",
+    "description": "Build a purposeful LinkedIn presence, share your story, and grow your professional network while staying true to your values.",
+    "category": "Career Foundations",
+    "startHere": false
+  },
+  {
+    "title": "Networking & Career Events",
+    "url": "#career-guide-networking-and-career-events",
+    "description": "Build meaningful professional relationships through coffee chats, career events, and thoughtful follow-ups.",
+    "category": "Career Foundations",
+    "startHere": false
+  },
+  {
+    "title": "Making the Most of your Degree",
+    "url": "#career-guide-making-the-most-of-your-degree",
+    "description": "Turn your coursework, skills, and university resources into valuable experience for your career journey.",
+    "category": "Career Foundations",
+    "startHere": false
   }
 ]
