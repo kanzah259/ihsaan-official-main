@@ -87,7 +87,7 @@ function initCareerGuideArticles() {
       });
       credits.hidden = creditCount === 0;
     }
-    const headings = [...page.querySelectorAll('.guide-article-content h2, .guide-article-content h3')];
+    const headings = [...page.querySelectorAll('.guide-article-content h2, .guide-article-content h3, .guide-article-content h4')];
     const desktop = page.querySelector('.guide-article-toc');
     const mobile = page.querySelector('.guide-article-mobile-toc nav');
     if (!desktop || !mobile) return;
@@ -109,6 +109,7 @@ function initCareerGuideArticles() {
         const link = document.createElement('a');
         link.textContent = heading.textContent;
         if (heading.tagName === 'H3') link.classList.add('guide-toc-subsection');
+        if (heading.tagName === 'H4') link.classList.add('guide-toc-subsection', 'guide-toc-nested-subsection');
         link.href = `#${page.dataset.page}?${new URLSearchParams({ section: section.id })}`;
         link.addEventListener('click', event => {
           if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

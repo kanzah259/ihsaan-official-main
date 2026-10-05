@@ -28,8 +28,8 @@ body:has(.guide-article-page.is-active) .topbar { background: #06152f !important
 .guide-article-content h2 { scroll-margin-top: 112px; }
 .guide-article-content section + section { padding-top: 30px; border-top: 1px solid #dfe7f1; }
 .guide-article-content h2 { color: #0a2858; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.3; letter-spacing: -.025em; }
-.guide-article-content p, .guide-article-content ul { margin-top: 20px; color: #52647c; font-size: 16px; line-height: 1.85; }
-.guide-article-content ul { padding-left: 24px; }
+.guide-article-content p, .guide-article-content ul, .guide-article-content ol { margin-top: 20px; color: #52647c; font-size: 16px; line-height: 1.85; }
+.guide-article-content ul, .guide-article-content ol { padding-left: 24px; }
 .guide-article-content li + li { margin-top: 10px; }
 .guide-article-back { display: inline-block; margin-top: 24px; color: #17529b; font-weight: 700; }
 .guide-article-mobile-toc { display: none; }
@@ -42,6 +42,14 @@ body:has(.guide-article-page.is-active) .topbar { background: #06152f !important
 .guide-article-callout { margin-top: 30px; padding: 24px; border: 1px solid #d7e3f1; border-radius: 12px; background: #eaf1fa; }
 .guide-article-callout h3 { margin-top: 0; }
 .guide-article-callout-closing { background: #eef1f5; }
+.guide-article-content h4 { color: #17335f; font-size: 19px; line-height: 1.4; scroll-margin-top: 112px; }
+.guide-article-toc .guide-toc-nested-subsection, .guide-article-mobile-toc .guide-toc-nested-subsection { padding-left: 24px; }
+.guide-article-inline-link { color: #17529b; text-decoration: underline; }
+.guide-article-disclosure { margin-top: 24px; }
+.guide-article-disclosure summary { cursor: pointer; font-weight: 700; line-height: 1.6; }
+.guide-article-comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.guide-article-callout-positive { background: #eaf4ef; }
+.guide-article-callout-negative { background: #f8eeee; }
 .guide-article-video { margin-top: 24px; }
 .guide-article-video summary { cursor: pointer; font-weight: 700; line-height: 1.6; }
 .guide-article-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; margin-top: 16px; }
@@ -59,6 +67,7 @@ body:has(.guide-article-page.is-active) .topbar { background: #06152f !important
   .guide-article-mobile-toc { display: block; margin: 28px 0 32px; padding: 16px 20px; border: 1px solid #d7e0eb; border-radius: 9px; background: #fff; }
   .guide-article-mobile-toc summary { cursor: pointer; font-size: 15px; font-weight: 700; }
   .guide-article-mobile-toc nav { margin-top: 14px; }
-  .guide-article-content section, .guide-article-content h2, .guide-article-content h3 { scroll-margin-top: 96px; }
+  .guide-article-content section, .guide-article-content h2, .guide-article-content h3, .guide-article-content h4 { scroll-margin-top: 96px; }
+  .guide-article-comparison { grid-template-columns: 1fr; }
   .guide-article-callout { padding: 18px; }
 }
