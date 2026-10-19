@@ -1,4 +1,16 @@
 // Called by the router only after the requested article is visible.
+function keepCareerGuideSectionVisible(nav, link) {
+  if (!link || nav.clientHeight === 0) return;
+  const navRect = nav.getBoundingClientRect();
+  const linkRect = link.getBoundingClientRect();
+  const inset = 12;
+  if (linkRect.top < navRect.top + inset) {
+    nav.scrollTop += linkRect.top - navRect.top - inset;
+  } else if (linkRect.bottom > navRect.bottom - inset) {
+    nav.scrollTop += linkRect.bottom - navRect.bottom + inset;
+  }
+}
+
 function scrollCareerGuideSection() {
   const [route, query = ''] = window.location.hash.slice(1).split('?');
   const id = new URLSearchParams(query).get('section');
@@ -84,6 +96,8 @@ function initCareerGuideArticles() {
         if (link.hidden) return;
         creditCount++;
         link.classList.add('guide-article-credit');
+        // An author's organisation is part of one attribution, not another author.
+        if (credits.hasAttribute('data-single-attribution') && creditCount > 1) return;
         if (link.querySelector('svg')) return;
         const person = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         person.setAttribute('viewBox', '0 0 24 24');
@@ -148,19 +162,23 @@ function initCareerGuideArticles() {
       activeFramePending = false;
       if (!page.classList.contains('is-active') || !sections.length) return;
       const offset = window.matchMedia('(max-width: 640px)').matches ? 116 : 132;
-      let active = sections[0];
-      sections.forEach(entry => {
+      const visibleSections = sections.filter(entry => entry.section.getClientRects().length > 0);
+      if (!visibleSections.length) return;
+      let active = visibleSections[0];
+      visibleSections.forEach(entry => {
         if (entry.section.getBoundingClientRect().top <= offset) active = entry;
       });
       const scrollRoot = document.scrollingElement || document.documentElement;
       const maximumScroll = Math.max(0, scrollRoot.scrollHeight - scrollRoot.clientHeight);
       if (maximumScroll > 0 && scrollRoot.scrollTop >= maximumScroll - 2) {
-        active = sections.at(-1);
+        active = visibleSections.at(-1);
       }
       sections.forEach(entry => entry.links.forEach(link => {
         if (entry === active) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
       }));
+      // Scroll only the sidebar's own viewport, never the reading pane.
+      keepCareerGuideSectionVisible(desktop, active.links.find(link => desktop.contains(link)));
     };
     const scheduleActiveSection = () => {
       if (activeFramePending) return;
@@ -174,10 +192,11 @@ function initCareerGuideArticles() {
       framePending = false;
       if (!page.classList.contains('is-active') || window.matchMedia('(max-width: 640px)').matches) {
         sidebar.style.height = '';
+        desktop.style.top = '';
         return;
       }
-      const finalSection = content.querySelector('section:last-child') || content;
-      const finalText = finalSection.lastElementChild;
+      desktop.style.top = `${Math.max(112, (window.innerHeight - desktop.offsetHeight) / 2)}px`;
+      const finalText = content.lastElementChild;
       if (!finalText) return;
       const end = finalText.getBoundingClientRect().bottom;
       // Match the sticky containing block to the actual content endpoint.
@@ -195,7 +214,9 @@ function initCareerGuideArticles() {
       scheduleActiveSection();
     };
     new MutationObserver(refreshArticle).observe(page, { attributes: true, attributeFilter: ['class'] });
-    new ResizeObserver(refreshArticle).observe(content);
+    const articleResizeObserver = new ResizeObserver(refreshArticle);
+    articleResizeObserver.observe(content);
+    articleResizeObserver.observe(desktop);
     scheduleAlignment();
     scheduleActiveSection();
   });

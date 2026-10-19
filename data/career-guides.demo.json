@@ -40,5 +40,40 @@
     "description": "Turn your coursework, skills, and university resources into valuable experience for your career journey.",
     "category": "Career Foundations",
     "startHere": false
+  },
+  {
+    "title": "Gaining Industry Experience",
+    "url": "#career-guide-gaining-industry-experience",
+    "description": "Explore internships, Spring Weeks, and Insight Days, find opportunities, and prepare stronger applications.",
+    "category": "Applications & Assessments",
+    "startHere": false
+  },
+  {
+    "title": "CV & Cover Letter Building",
+    "url": "#career-guide-cv-and-cover-letter-building",
+    "description": "Build a tailored CV and compelling cover letter that showcase your experience, achievements, and motivation.",
+    "category": "Applications & Assessments",
+    "startHere": false
+  },
+  {
+    "title": "Mastering Online Tests",
+    "url": "#career-guide-mastering-online-tests",
+    "description": "Understand online assessments, prepare effectively, and explore practice resources to improve your performance.",
+    "category": "Applications & Assessments",
+    "startHere": false
+  },
+  {
+    "title": "Acing Interviews",
+    "url": "#career-guide-acing-interviews",
+    "description": "Prepare for different interview formats, make a strong first impression, and convey your skills and motivation with confidence.",
+    "category": "Applications & Assessments",
+    "startHere": false
+  },
+  {
+    "title": "Crushing Assessment Centres",
+    "url": "#career-guide-crushing-assessment-centres",
+    "description": "Prepare for group exercises, interviews, and practical tasks, and show your potential under pressure.",
+    "category": "Applications & Assessments",
+    "startHere": false
   }
 ]
