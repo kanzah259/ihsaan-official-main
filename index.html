@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <link rel="preload" as="image" href="IHSAAN LOGO.webp">
+  <link rel="preload" as="image" href="assets/images/ihsaan-logo.webp">
   <link rel="preload" as="image" href="hero-poster.webp">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="icon" type="image/png" href="assets/images/white-icon.png">
-  <link rel="apple-touch-icon" href="assets/images/white-icon.png">
+  <!-- Raster fallback for crawlers; SVGs follow system light/dark like ihsaan-public-website. -->
+  <link rel="icon" type="image/png" href="assets/images/blue-icon.png">
+  <link rel="icon" href="assets/images/blue-icon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/images/white-icon.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="assets/images/blue-icon.png">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>IHSAAN</title>
   <meta name="description" content="IHSAAN — Faith. Excellence. Service." />
@@ -55,7 +58,7 @@
   <header class="topbar" id="top">
     <div class="nav-inner">
       <a class="brand brand--logoonly" href="#home" data-route="home" aria-label="IHSAAN home">
-        <img class="brand-logo" src="assets/images/IHSAAN LOGO.webp" alt="IHSAAN logo" />
+        <img class="brand-logo" src="assets/images/ihsaan-logo.webp" alt="IHSAAN logo" />
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
