@@ -49,6 +49,8 @@ See [docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md) for navigation paths and workfl
 | `#haqqathons` | Hackathons |
 | `#opportunities-tracker` | Opportunities tracker |
 | `#career-guides` | Career Guides (in-app; nav also links Notion) |
+| `#privacy` | Privacy notice |
+| `#terms` | Terms of use |
 
 External links used in nav/CTAs include Career Guides on Notion, My Muslim Mentor, and the member portal.
 

@@ -100,6 +100,22 @@
   box-shadow: 0 0 0 4px rgba(25,78,139,.10);
   transform: translateY(-1px);
 }
+.contact-privacy-note{
+  margin: 0;
+  color: #52617c;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+.contact-privacy-note a{
+  color: #0A3463;
+  border-bottom: 1px solid rgba(10,52,99,.28);
+  transition: color .2s ease, border-color .2s ease;
+}
+.contact-privacy-note a:hover{
+  color: #194E8B;
+  border-color: rgba(25,78,139,.72);
+}
 .contact-submit{
   justify-self: start;
   padding: 14px 20px;

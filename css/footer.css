@@ -152,7 +152,7 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(250px, 1.35fr) repeat(3, minmax(145px, .75fr));
+  grid-template-columns: minmax(220px, 1.25fr) repeat(4, minmax(120px, .7fr));
   gap: clamp(28px, 4vw, 64px);
   align-items: start;
 }

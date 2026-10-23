@@ -19,7 +19,7 @@ Scanner snapshot (cartographer): ~89 scanned files; code/docs concentrated in `p
 | Path | Purpose |
 | --- | --- |
 | `index.html` | App shell: meta, stylesheets, top nav, `data-include` mounts, footer, script order |
-| `pages/` | Route bodies: `home`, `who-we-are`, `get-involved`, `career-conferences`, `faithful-talent`, `haqqathons`, `opportunities-tracker`, `career-guides` |
+| `pages/` | Route bodies: `home`, `who-we-are`, `get-involved`, `career-conferences`, `faithful-talent`, `haqqathons`, `opportunities-tracker`, `career-guides`, `privacy`, `terms` |
 | `css/` | Feature-split styles; `base.css` + section files + `responsive.css` last |
 | `scripts/includes.js` | Fetches `data-include` HTML into the DOM |
 | `scripts/routing.js` | Hash → active page; mobile drawer; programmes dropdown |

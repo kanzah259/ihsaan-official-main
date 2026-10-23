@@ -37,6 +37,7 @@ function showPage(route) {
       burger.setAttribute("aria-expanded", "false");
     }
     if (burger) burger.setAttribute("aria-expanded", "false");
+    document.querySelectorAll("dialog[open]").forEach((dialog) => dialog.close());
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     initRevealSystem();

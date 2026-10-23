@@ -221,7 +221,7 @@ Headlines frequently use balanced wrapping. Preserve intentional short line leng
 | Contact | Copy and form in unequal columns | One column at 600px |
 | Event calendar | Copy and embed in a flex row | Stacked at 768px |
 | Tracker listings | Auto-fill columns with 270px minimum width | Two columns at 960px, one at 640px |
-| Footer | Brand plus three link columns | Two columns at 980px with full-width brand; one at 640px |
+| Footer | Brand plus four link columns (Programmes, Information, Legal, Connect) | Two columns at 980px with full-width brand; one at 640px |
 
 **Cascade caveat:** `programmes.css` declares a two-column programme grid at 900px, but the later `home.css` repeats the same selectors with three columns outside a media query. Source order therefore overrides that tablet grid declaration. Treat the intended two-column tablet layout as unverified, not an established working rule.
 
@@ -285,7 +285,9 @@ The fixed header has a transparent background with no scrolled-state blur, shado
 
 Social buttons are 32px squares with 10px corners; Instagram keeps its platform gradient, LinkedIn its blue, and TikTok its black fill. The 900px breakpoint replaces desktop navigation with a burger and full-screen translucent drawer, with a native details/summary programme accordion. Preserve expanded-state attributes and accessible names.
 
-The footer is dark blue with a subtle grid, a logo rendered white via CSS filtering, left-aligned link groups, small uppercase section labels, and unboxed social icons. It is not a white footer despite the blue logo asset it loads.
+The footer is dark blue with a subtle grid, a logo rendered white via CSS filtering, left-aligned link groups, small uppercase section labels, and unboxed social icons. It is not a white footer despite the blue logo asset it loads. Privacy and Terms of use live in a dedicated Legal column, not under Information.
+
+Legal routes (`#privacy`, `#terms`) use the shared navy `page-head` plus a single-column `.legal-doc` prose block (max ~72ch): no cards, no hero media. Owner-confirmation notes use a light bordered panel, not a thick side accent.
 
 ### Buttons and links
 

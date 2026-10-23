@@ -1,5 +1,133 @@
 /* inner pages, footer, responsive */
 
+/* ---------- LEGAL DOCUMENTS ---------- */
+.legal-doc {
+  max-width: 72ch;
+  color: #22315e;
+}
+
+.legal-doc .legal-meta {
+  margin: 0 0 28px;
+  color: #556a99;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.legal-doc > p,
+.legal-doc > ul {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.legal-doc h2 {
+  margin: 36px 0 12px;
+  color: var(--navDark);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.legal-doc h3 {
+  margin: 26px 0 10px;
+  color: #0A3463;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.legal-doc ul {
+  padding-left: 1.25em;
+}
+
+.legal-doc li {
+  margin-bottom: 8px;
+}
+
+.legal-doc a {
+  color: #0A3463;
+  border-bottom: 1px solid rgba(10, 52, 99, 0.28);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.legal-doc a:hover {
+  color: #194E8B;
+  border-color: rgba(25, 78, 139, 0.72);
+}
+
+.legal-doc code {
+  font-size: 0.92em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: #eef4ff;
+  color: #102B68;
+}
+
+.legal-doc .legal-note {
+  padding: 14px 16px;
+  border: 1px solid rgba(16, 43, 104, 0.12);
+  background: #f4f7fb;
+  color: #31405f;
+}
+
+.legal-doc .legal-related {
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(16, 43, 104, 0.12);
+  font-weight: 600;
+}
+
+.legal-doc .legal-source {
+  margin-top: 18px;
+  color: #556a99;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.legal-table-wrap {
+  margin: 0 0 22px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.legal-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.legal-table th,
+.legal-table td {
+  padding: 12px 14px;
+  border: 1px solid rgba(16, 43, 104, 0.12);
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-table th {
+  background: #eef4ff;
+  color: #0A3463;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.legal-table td {
+  background: #fff;
+  color: #22315e;
+}
+
+.legal-table tr:nth-child(even) td {
+  background: #f7faff;
+}
+
 /* ---------- MEET THE TEAM ---------- */
 .team-grid{
   display: grid;
