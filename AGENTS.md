@@ -18,11 +18,4 @@ Static HTML/CSS/JS site with no build step. `index.html` is the shell, `pages/` 
 
 ## Commit authorship
 
-Never add AI agent profiles to commit authors, co-authors, or trailers.
-
-- Do not add `Co-authored-by:` lines for agents or tools (for example CommandCodeBot, Cursor, cursoragent, Claude, Codex, Copilot).
-- Do not set an agent name or agent email as `GIT_AUTHOR_*` or `GIT_COMMITTER_*`.
-- Commits must read as authored solely by the humans working in this repository.
-- Do not amend or force-push shared history to add agent attribution.
-
-Applies to every branch, including `main`.
+Never add AI agent profiles to commit authors, co-authors, or trailers. Applies to every branch, including `main`.
