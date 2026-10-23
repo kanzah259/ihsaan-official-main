@@ -285,7 +285,9 @@ The fixed header has a transparent background with no scrolled-state blur, shado
 
 Social buttons are 32px squares with 10px corners; Instagram keeps its platform gradient, LinkedIn its blue, and TikTok its black fill. The 900px breakpoint replaces desktop navigation with a burger and full-screen translucent drawer, with a native details/summary programme accordion. Preserve expanded-state attributes and accessible names.
 
-The footer is dark blue with a subtle grid, a logo rendered white via CSS filtering, left-aligned link groups, small uppercase section labels, and unboxed social icons. It is not a white footer despite the blue logo asset it loads.
+The footer is dark blue with a subtle grid, a logo rendered white via CSS filtering, left-aligned link groups, small uppercase section labels, and unboxed social icons. It is not a white footer despite the blue logo asset it loads. The Information column includes Privacy and Terms of use hash routes.
+
+Legal routes (`#privacy`, `#terms`) use the shared navy `page-head` plus a single-column `.legal-doc` prose block (max ~72ch): no cards, no hero media. Owner-confirmation notes use a light bordered panel, not a thick side accent.
 
 ### Buttons and links
 
