@@ -6,8 +6,11 @@
   <link rel="preload" as="image" href="hero-poster.webp">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="icon" type="image/png" href="assets/images/white-icon.png">
-  <link rel="apple-touch-icon" href="assets/images/white-icon.png">
+  <!-- Raster fallback for crawlers; SVGs follow system light/dark like ihsaan-public-website. -->
+  <link rel="icon" type="image/png" href="assets/images/blue-icon.png">
+  <link rel="icon" href="assets/images/blue-icon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="assets/images/white-icon.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="assets/images/blue-icon.png">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>IHSAAN</title>
   <meta name="description" content="IHSAAN — Faith. Excellence. Service." />
