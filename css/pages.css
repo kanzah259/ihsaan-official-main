@@ -81,6 +81,53 @@
   font-weight: 600;
 }
 
+.legal-doc .legal-source {
+  margin-top: 18px;
+  color: #556a99;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.legal-table-wrap {
+  margin: 0 0 22px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.legal-table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.legal-table th,
+.legal-table td {
+  padding: 12px 14px;
+  border: 1px solid rgba(16, 43, 104, 0.12);
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-table th {
+  background: #eef4ff;
+  color: #0A3463;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.legal-table td {
+  background: #fff;
+  color: #22315e;
+}
+
+.legal-table tr:nth-child(even) td {
+  background: #f7faff;
+}
+
 /* ---------- MEET THE TEAM ---------- */
 .team-grid{
   display: grid;
