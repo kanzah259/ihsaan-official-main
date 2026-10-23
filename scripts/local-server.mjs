@@ -23,7 +23,14 @@ const contentTypes = {
 
 createServer((request, response) => {
   const url = new URL(request.url ?? "/", "http://localhost");
-  const pathname = url.pathname === "/" ? "/index.html" : url.pathname;
+  let pathname;
+  try {
+    pathname = decodeURIComponent(url.pathname);
+  } catch {
+    response.writeHead(400, { "Cache-Control": "no-store, max-age=0" }).end("Bad request");
+    return;
+  }
+  if (pathname === "/") pathname = "/index.html";
   const file = resolve(root, `.${normalize(pathname)}`);
 
   if (!file.startsWith(`${root}${sep}`)) {
